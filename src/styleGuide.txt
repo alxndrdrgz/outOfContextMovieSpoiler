@@ -1,0 +1,65 @@
+#6B6EEC - Light Blue
+#141640 - Dark BLue
+#8EF9F4 - Teal
+#BF9458 - Light orange
+#B05C3A - Darker Orange
+
+Creating Sass folders for our styles:
+
+When including mixins to style elements, make sure they are above all othe styling for that element
+When nesting all hover elements should be at the bottom of all the other stylings see Discord/assets for an example
+When nesting within scss Try not to over never more than 4 nests deep
+
+Make sure these are at the very top of the styles.scss file:
+@import "setup";
+@import "mixins";
+@import "variables";
+
+Nest styles wherever possible if it leads to cleaner/DRYer code
+_Setup snippet
+_Images
+_Typography
+
+_Mixins Ideas:
+-Display Flex
+-Fonts Styles
+-Anchor styling
+-Button styling
+-Margin/Padding
+-Border/Border Radius
+
+_Variables
+_Media Queries
+
+Naming convention:
+- camelCase
+- maybe "kebob-case" for class names
+
+Fonts:
+html {
+    font-size:62.5%
+}
+
+Using Rem's
+- Kanit Light (light 300)
+- Lato (regular 400)
+
+Ordering of styles:
+- Alphabetical order
+- Split into blocks of similarly connected styles
+
+Indentation:
+Spaces: 2
+indent 1 Space after Element for styling Example:h1 {}
+indent 1 Space after colon for styling Example:
+h1 {
+color: red;
+}
+<------ Include and enter space between styling elements
+h2 {
+  color: blue;
+}
+
+
+
+
