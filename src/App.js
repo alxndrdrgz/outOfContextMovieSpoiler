@@ -73,8 +73,17 @@ const getMovies = input => {
       }
     })
     .then( response => {
-      const resultsArray = response.data.results;
-      setMoviesArray(resultsArray.slice(0, 3));
+      const resultsArray = response.data.results.slice(0, 3);
+      // console.log(resultsArray);
+      const filteredArray = resultsArray.map( movie => {
+        return { 
+          id: movie.id,
+          title: movie.title,
+          overview: movie.overview,
+          release_date: movie.release_date
+         };
+      });
+      setMoviesArray(filteredArray);
     })
   }
   
