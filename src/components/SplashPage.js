@@ -2,7 +2,7 @@
 import { Fragment, useState } from 'react';
 
 
-const SplashPage = ({ onSubmit, moviesArray, getKeywords }) => {
+const SplashPage = ({ onSubmit, moviesArray, getKeywords, getOverview }) => {
 
     //Declaring useState for form element 
     const [ userInput, setUserInput ] = useState('');
@@ -12,11 +12,19 @@ const SplashPage = ({ onSubmit, moviesArray, getKeywords }) => {
         setUserInput(event.target.value);
     }
 
+    // Function that passes user input to the onSubmit function which makes the call to the movieDb search endpoint
     const handleSubmit = event => {
         event.preventDefault();
         onSubmit(userInput);
 
         setUserInput('');
+    }
+
+    // Creates the eventhandler that passes the id and overview to the functions that saves them to their respective states
+    const handleClick = (movie) => {
+      getKeywords(movie.id)
+      getOverview(movie.overview)
+      
     }
 
     return (
@@ -58,7 +66,7 @@ const SplashPage = ({ onSubmit, moviesArray, getKeywords }) => {
                             <button
                                 key={movie.id}
                                 id={movie.id}
-                                onClick={ () => getKeywords(movie.id)}
+                                onClick={() => {handleClick(movie)}}
                             >
                                 {`${movie.title}(${movie.release_date})`}
                             </button>

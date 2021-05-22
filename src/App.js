@@ -20,7 +20,7 @@ oocms.mDbTitleURL = 'https://api.themoviedb.org/3/search/movie/';
 
 
 
-function App () {
+function App() {
   // PSEUDOCODE
   // Text input with search button
   // get input value (we're looking for a movie title)
@@ -37,32 +37,26 @@ function App () {
 
   //STRETCH GOALS: shareable results using routing? :O
 
-  //List of components to build:
-  // 1 - Splash Page
-  //* h1
-  //* p
-  //* form
-  //* form input
-  //* submit button
-
-  // 2 - Loading Page
-  //* h1 - or some text element
-  //* div - that holds animation
+  // 1 - Loading Page
   //* conditionally rendered error message
 
-  // 3 - Results page
-  //* h1
-  //* image gallery
-  //* paragraph for movie overview
-  //* clear button
 
-  // 4 - Footer
-  //* text
-
+  // useStates located here:
+  // State that store the initial movie results
   const [moviesArray, setMoviesArray] = useState([]);
+  // State that stores the chosen movies overview
+  const [moviesOverview, setMoviesOverview] = useState('')
+  // State that stores the keywords from the movie keyword api endpoint
+  const [movieKeywords, setMovieKeywords] = useState([])
+
+  // Function that sets movie overview in state
+  const getOverview = (overview) => {
+    setMoviesOverview(overview)
+    console.log(moviesOverview)
+  }
 
   // Function to take user input and make call to Movie DB API
-const getMovies = input => {
+  const getMovies = input => {
     axios({
       url: oocms.mDbTitleURL,
       method: 'GET',
@@ -72,23 +66,25 @@ const getMovies = input => {
         query: input
       }
     })
-    .then( response => {
-      const resultsArray = response.data.results.slice(0, 3);
-      // console.log(resultsArray);
-      const filteredArray = resultsArray.map( movie => {
-        return { 
-          id: movie.id,
-          title: movie.title,
-          overview: movie.overview,
-          release_date: movie.release_date
-         };
-      });
-      setMoviesArray(filteredArray);
-    })
+      .then(response => {
+        const resultsArray = response.data.results.slice(0, 3);
+        // Mapping through the results of the api call and saving a simplified version of the data and saving it the the moviesArray
+        const filteredArray = resultsArray.map(movie => {
+          return {
+            id: movie.id,
+            title: movie.title,
+            overview: movie.overview,
+            release_date: movie.release_date
+          };
+        });
+        setMoviesArray(filteredArray);
+      })
   }
   
+  
+  
   console.log(moviesArray);
-
+  
   // Function to get keywords from selected movie
   const getKeywords = id => {
     axios({
@@ -99,16 +95,36 @@ const getMovies = input => {
         api_key: oocms.mDbKey
       }
     })
-    .then( response => console.log(response.data.keywords.slice(0, 3)));
+    .then(response => {
+      // Saving keywords to the moviesKeywords state
+      const keywords = response.data.keywords.slice(0, 3);
+      setMovieKeywords(keywords)
+    });
   }
+  
+  useEffect(() => {
+    // Calling the giphy api using the keywords saved in the movieKeywords state when the movieKeyword state changes using the dependency array
+    movieKeywords.forEach(keyword => {
+      axios({
+        method: "GET",
+        url: oocms.giphyURL,
+        dataResponse: 'json',
+        params: {
+          api_key: oocms.giphyKey,
+          q: keyword.name
+        }
+      }).then(response => console.log(response))
 
+    });
+  }, [movieKeywords])
 
   return (
     <div>
-      <SplashPage 
-        onSubmit={getMovies} 
-        moviesArray={moviesArray} 
+      <SplashPage
+        onSubmit={getMovies}
+        moviesArray={moviesArray}
         getKeywords={getKeywords}
+        getOverview={getOverview}
       />
       <LoadingPage />
       <Results />
