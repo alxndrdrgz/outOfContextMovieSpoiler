@@ -48,6 +48,8 @@ function App() {
   const [moviesOverview, setMoviesOverview] = useState('')
   // State that stores the keywords from the movie keyword api endpoint
   const [movieKeywords, setMovieKeywords] = useState([])
+  // State that saves the gifs in an array
+  const [gifsArray, setGifsArray] = useState([])
 
   // Function that sets movie overview in state
   const getOverview = (overview) => {
@@ -103,6 +105,10 @@ function App() {
   }
   
   useEffect(() => {
+
+    // Creating an array so we can push the results from the gifs url into it
+    const gifInfo = [];
+
     // Calling the giphy api using the keywords saved in the movieKeywords state when the movieKeyword state changes using the dependency array
     movieKeywords.forEach(keyword => {
       axios({
@@ -113,9 +119,16 @@ function App() {
           api_key: oocms.giphyKey,
           q: keyword.name
         }
-      }).then(response => console.log(response))
-
+      }).then(response => {
+        gifInfo.push(
+          {
+            url:response.data.data[0].images.original.url,
+            alt:response.data.data[0].title
+          }
+        )
+      })
     });
+    setGifsArray(gifInfo)
   }, [movieKeywords])
 
   return (
