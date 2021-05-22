@@ -92,7 +92,7 @@ const getMovies = input => {
 
   return (
     <div>
-      <SplashPage onSubmit={getMovies}/>
+      <SplashPage onSubmit={getMovies} moviesArray={moviesArray}/>
       <LoadingPage />
       <Results />
     </div>
