@@ -6,14 +6,21 @@ import LoadingPage from './components/LoadingPage.js';
 import Results from './components/Results.js';
 
 //Declaring name space structure for app.
-const app = {};
+const oocms = {};
 
 //Variable declaring the Giphy API key
-app.giphyKey = `J0Mq3DGHVu2HtcdoS7QMvJX0qMJ359VA`;
+oocms.giphyKey = `J0Mq3DGHVu2HtcdoS7QMvJX0qMJ359VA`;
+// Variable to store Giphy endpoint
+oocms.giphyURL = 'https://api.giphy.com/v1/gifs/search';
 //Variable declaring Movie DB key
-app.mDbKey = `5b4cfcb5bfcdfe63f43999ac1acbfb53`;
+oocms.mDbKey = `5b4cfcb5bfcdfe63f43999ac1acbfb53`;
+// Variable to store Movie DB endpoint
+oocms.mDbTitleURL = 'https://api.themoviedb.org/3/search/movie/';
+oocms.movieDbKeywordURL = 'https://api.themoviedb.org/3/movie/{movieID}/keywords';
 
-function App() {
+
+
+function App () {
   // PSEUDOCODE
   // Text input with search button
   // get input value (we're looking for a movie title)
@@ -32,33 +39,51 @@ function App() {
 
   //List of components to build:
   // 1 - Splash Page
-        //* h1
-        //* p
-        //* form
-        //* form input
-        //* submit button
-  
+  //* h1
+  //* p
+  //* form
+  //* form input
+  //* submit button
+
   // 2 - Loading Page
-        //* h1 - or some text element
-        //* div - that holds animation
-        //* conditionally rendered error message
+  //* h1 - or some text element
+  //* div - that holds animation
+  //* conditionally rendered error message
 
   // 3 - Results page
-        //* h1
-        //* image gallery
-        //* paragraph for movie overview
-        //* clear button
-  
+  //* h1
+  //* image gallery
+  //* paragraph for movie overview
+  //* clear button
+
   // 4 - Footer
-        //* text
-      
+  //* text
 
+  const [moviesArray, setMoviesArray] = useState([]);
 
+  // Function to take user input and make call to Movie DB API
+const getMovies = input => {
+    axios({
+      url: oocms.mDbTitleURL,
+      method: 'GET',
+      dataResponse: 'json',
+      params: {
+        api_key: oocms.mDbKey,
+        query: input
+      }
+    })
+    .then( response => {
+      const resultsArray = response.data.results;
+      setMoviesArray(resultsArray.slice(0, 3));
+    })
+  }
+  
+  console.log(moviesArray);
 
 
   return (
     <div>
-      <SplashPage /> 
+      <SplashPage onSubmit={getMovies}/>
       <LoadingPage />
       <Results />
     </div>
