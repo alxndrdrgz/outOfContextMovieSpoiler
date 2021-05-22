@@ -2,7 +2,7 @@
 import { Fragment, useState } from 'react';
 
 
-const SplashPage = () => {
+const SplashPage = ({ onSubmit, moviesArray, getKeywords }) => {
 
     //Declaring useState for form element 
     const [ userInput, setUserInput ] = useState('');
@@ -10,6 +10,13 @@ const SplashPage = () => {
     //Handle change function. Every time something is typed in text input field it is set as the value to use for search query.  
     const handleChange = (event) => {
         setUserInput(event.target.value);
+    }
+
+    const handleSubmit = event => {
+        event.preventDefault();
+        onSubmit(userInput);
+
+        setUserInput('');
     }
 
     return (
@@ -25,7 +32,7 @@ const SplashPage = () => {
             <main>
                 <form 
                     action=""
-                    // onSubmit={submit}
+                    onSubmit={handleSubmit}
                 >
                     <label htmlFor="movieInput">
 
@@ -44,6 +51,20 @@ const SplashPage = () => {
                         Submit
                     </button>
                 </form>
+
+                <div className="results-buttons">
+                    {moviesArray.map(movie => {
+                        return (
+                            <button
+                                key={movie.id}
+                                id={movie.id}
+                                onClick={ () => getKeywords(movie.id)}
+                            >
+                                {`${movie.title}(${movie.release_date})`}
+                            </button>
+                        )
+                    })}
+                </div>
             </main>
         </Fragment>
     )
