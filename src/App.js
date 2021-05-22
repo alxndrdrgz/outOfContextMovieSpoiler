@@ -1,7 +1,9 @@
 import './App.scss';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import SplashPage from './components/SplashPage';
+import SplashPage from './components/SplashPage.js';
+import LoadingPage from './components/LoadingPage.js';
+import Results from './components/Results.js';
 
 //Declaring name space structure for app.
 const app = {};
@@ -56,7 +58,9 @@ function App() {
 
   return (
     <div>
-      <SplashPage />
+      <SplashPage /> 
+      <LoadingPage />
+      <Results />
     </div>
   );
 }
