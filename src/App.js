@@ -140,7 +140,9 @@ function App() {
         getOverview={getOverview}
       />
       <LoadingPage />
-      <Results />
+      <Results 
+      gifsArray={gifsArray}
+      />
     </div>
   );
 }
