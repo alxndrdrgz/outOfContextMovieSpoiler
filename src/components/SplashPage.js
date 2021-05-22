@@ -2,7 +2,7 @@
 import { Fragment, useState } from 'react';
 
 
-const SplashPage = ({ onSubmit, moviesArray }) => {
+const SplashPage = ({ onSubmit, moviesArray, getKeywords }) => {
 
     //Declaring useState for form element 
     const [ userInput, setUserInput ] = useState('');
@@ -57,6 +57,8 @@ const SplashPage = ({ onSubmit, moviesArray }) => {
                         return (
                             <button
                                 key={movie.id}
+                                id={movie.id}
+                                onClick={ () => getKeywords(movie.id)}
                             >
                                 {`${movie.title}(${movie.release_date})`}
                             </button>

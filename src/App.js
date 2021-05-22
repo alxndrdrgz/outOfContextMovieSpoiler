@@ -16,7 +16,7 @@ oocms.giphyURL = 'https://api.giphy.com/v1/gifs/search';
 oocms.mDbKey = `5b4cfcb5bfcdfe63f43999ac1acbfb53`;
 // Variable to store Movie DB endpoint
 oocms.mDbTitleURL = 'https://api.themoviedb.org/3/search/movie/';
-oocms.movieDbKeywordURL = 'https://api.themoviedb.org/3/movie/{movieID}/keywords';
+// oocms.movieDbKeywordURL = 'https://api.themoviedb.org/3/movie/{movieID}/keywords';
 
 
 
@@ -89,10 +89,27 @@ const getMovies = input => {
   
   console.log(moviesArray);
 
+  // Function to get keywords from selected movie
+  const getKeywords = id => {
+    axios({
+      url: `https://api.themoviedb.org/3/movie/${id}/keywords`,
+      method: 'GET',
+      dataResponse: 'json',
+      params: {
+        api_key: oocms.mDbKey
+      }
+    })
+    .then( response => console.log(response.data.keywords.slice(0, 3)));
+  }
+
 
   return (
     <div>
-      <SplashPage onSubmit={getMovies} moviesArray={moviesArray}/>
+      <SplashPage 
+        onSubmit={getMovies} 
+        moviesArray={moviesArray} 
+        getKeywords={getKeywords}
+      />
       <LoadingPage />
       <Results />
     </div>
