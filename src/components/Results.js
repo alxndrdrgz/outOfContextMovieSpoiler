@@ -1,11 +1,16 @@
 import { Fragment } from 'react';
 
-const Results = ({ gifsArray, splashState }) => {
+const Results = ({ gifsArray, splashState, movieTitle, movieOverview, setMoviesArray }) => {
+
+    const handleClick = ()=> {
+        splashState();
+        setMoviesArray([])
+    }
 
     console.log(gifsArray.length)
     return (
         <Fragment>
-            <h1>Intense Foot Trauma: The Movie</h1>
+            <h1>{movieTitle}</h1>
             <div className="gallery">
 
                 {
@@ -23,11 +28,11 @@ const Results = ({ gifsArray, splashState }) => {
             </div>
 
             <p className="movie-overview">
-                {/* {movieOverview} */}
+                {movieOverview}
             </p>
             <button
                 className="clear-button"
-                onClick={splashState}
+                onClick={handleClick}
             >Go Back
                 </button>
         </Fragment>

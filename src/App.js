@@ -45,18 +45,25 @@ function App() {
   // State that store the initial movie results
   const [moviesArray, setMoviesArray] = useState([]);
   // State that stores the chosen movies overview
-  const [moviesOverview, setMoviesOverview] = useState('')
+  const [movieOverview, setMovieOverview] = useState('');
+  // state that stores the chosen movie title
+  const [movieTitle, setMovieTitle] = useState('');
   // State that stores the keywords from the movie keyword api endpoint
-  const [movieKeywords, setMovieKeywords] = useState([])
+  const [movieKeywords, setMovieKeywords] = useState([]);
   // State that saves the gifs in an array
   const [gifsArray, setGifsArray] = useState([]);
   // state that tracks the current page view
-  const [pageView, setPageView] = useState('splash')
+  const [pageView, setPageView] = useState('splash');
 
   // Function that sets movie overview in state
   const getOverview = (overview) => {
-    setMoviesOverview(overview)
-    console.log(moviesOverview)
+    setMovieOverview(overview)
+    console.log(movieOverview)
+  }
+
+  const getTitle = (title) => {
+    setMovieTitle(title);
+    console.log(movieTitle);
   }
 
   // Function to take user input and make call to Movie DB API
@@ -173,6 +180,7 @@ function App() {
             onSubmit={getMovies}
             moviesArray={moviesArray}
             getKeywords={getKeywords}
+            getTitle={getTitle}
             getOverview={getOverview}
             loadingState={loadingState}
           />
@@ -188,6 +196,9 @@ function App() {
           <Results
             gifsArray={gifsArray}
             splashState={splashState}
+            movieTitle={movieTitle}
+            movieOverview={movieOverview}
+            setMoviesArray={setMoviesArray}
           />
           : null
       }

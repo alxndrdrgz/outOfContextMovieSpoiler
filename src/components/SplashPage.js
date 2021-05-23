@@ -1,8 +1,9 @@
 //SplashPage.js component containing header, description, and form inputs
+import { getByTitle } from '@testing-library/dom';
 import { Fragment, useState } from 'react';
 
 
-const SplashPage = ({ onSubmit, moviesArray, getKeywords, getOverview, loadingState }) => {
+const SplashPage = ({ onSubmit, moviesArray, getKeywords, getOverview, getTitle, loadingState }) => {
 
     //Declaring useState for form element 
     const [ userInput, setUserInput ] = useState('');
@@ -24,6 +25,7 @@ const SplashPage = ({ onSubmit, moviesArray, getKeywords, getOverview, loadingSt
     const handleClick = (movie) => {
       getKeywords(movie.id)
       getOverview(movie.overview)
+      getTitle(movie.title)
       loadingState();
 
     }
