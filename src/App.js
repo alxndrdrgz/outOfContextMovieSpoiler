@@ -45,16 +45,25 @@ function App() {
   // State that store the initial movie results
   const [moviesArray, setMoviesArray] = useState([]);
   // State that stores the chosen movies overview
-  const [moviesOverview, setMoviesOverview] = useState('')
+  const [movieOverview, setMovieOverview] = useState('');
+  // state that stores the chosen movie title
+  const [movieTitle, setMovieTitle] = useState('');
   // State that stores the keywords from the movie keyword api endpoint
-  const [movieKeywords, setMovieKeywords] = useState([])
+  const [movieKeywords, setMovieKeywords] = useState([]);
   // State that saves the gifs in an array
-  const [gifsArray, setGifsArray] = useState([])
+  const [gifsArray, setGifsArray] = useState([]);
+  // state that tracks the current page view
+  const [pageView, setPageView] = useState('splash');
 
   // Function that sets movie overview in state
   const getOverview = (overview) => {
-    setMoviesOverview(overview)
-    console.log(moviesOverview)
+    setMovieOverview(overview)
+    console.log(movieOverview)
+  }
+
+  const getTitle = (title) => {
+    setMovieTitle(title);
+    console.log(movieTitle);
   }
 
   // Function to take user input and make call to Movie DB API
@@ -82,11 +91,11 @@ function App() {
         setMoviesArray(filteredArray);
       })
   }
-  
-  
-  
+
+
+
   console.log(moviesArray);
-  
+
   // Function to get keywords from selected movie
   const getKeywords = id => {
     axios({
@@ -97,52 +106,106 @@ function App() {
         api_key: oocms.mDbKey
       }
     })
-    .then(response => {
-      // Saving keywords to the moviesKeywords state
-      const keywords = response.data.keywords.slice(0, 3);
-      setMovieKeywords(keywords)
-    });
+      .then(response => {
+        // Saving keywords to the moviesKeywords state
+        const keywords = response.data.keywords.slice(0, 3);
+        setMovieKeywords(keywords)
+      });
   }
-  
+
   useEffect(() => {
 
     // Creating an array so we can push the results from the gifs url into it
-    const gifInfo = [];
+    let gifInfo = [];
+    // initializinga  requests array to store the promises because promise.all requires an array
+    let requests = [];
+
 
     // Calling the giphy api using the keywords saved in the movieKeywords state when the movieKeyword state changes using the dependency array
     movieKeywords.forEach(keyword => {
-      axios({
-        method: "GET",
-        url: oocms.giphyURL,
-        dataResponse: 'json',
-        params: {
-          api_key: oocms.giphyKey,
-          q: keyword.name
-        }
-      }).then(response => {
-        gifInfo.push(
-          {
-            url:response.data.data[0].images.original.url,
-            alt:response.data.data[0].title
+      // pushing the three giphy requests to a requests array
+      requests.push(
+        axios({
+          method: "GET",
+          url: oocms.giphyURL,
+          dataResponse: 'json',
+          params: {
+            api_key: oocms.giphyKey,
+            q: keyword.name
           }
-        )
+        })
+      )
+    })
+    // once all three promises have resolved, loop through the data and push it to the gifInfo array
+    Promise.all(requests)
+      .then(responses => {
+        responses.forEach(response => {
+          gifInfo.push(
+            {
+              url: response.data.data[0].images.original.url,
+              alt: response.data.data[0].title
+            }
+          )
+        })
+        // set the gifsArray state to the gifInfo array
+        setGifsArray(gifInfo)
+        resultsState(gifInfo)
       })
-    });
-    setGifsArray(gifInfo)
-  }, [movieKeywords])
+    }, [movieKeywords])
+    
+    
+
+  // function to set the viewState to "loading"
+  const loadingState = () => {
+    setPageView('loading')
+  }
+
+  // function to set the viewState to "results"
+  const resultsState = (gifInfo) => {
+    if(gifInfo.length > 0){
+      setPageView('results')
+    }
+  }
+
+  // function to set the viewState to "splash"
+  const splashState = () => {
+    setPageView('splash')
+  }
 
   return (
     <div>
-      <SplashPage
-        onSubmit={getMovies}
-        moviesArray={moviesArray}
-        getKeywords={getKeywords}
-        getOverview={getOverview}
-      />
-      <LoadingPage />
-      <Results 
-      gifsArray={gifsArray}
-      />
+      {
+        pageView === "splash" ?
+          <SplashPage
+            onSubmit={getMovies}
+            moviesArray={moviesArray}
+            getKeywords={getKeywords}
+            getTitle={getTitle}
+            getOverview={getOverview}
+            loadingState={loadingState}
+          />
+          : null
+      }
+      {
+        pageView === "loading" ?
+          <LoadingPage />
+          : null
+      }
+      {
+        pageView === "results" ?
+          <Results
+            gifsArray={gifsArray}
+            splashState={splashState}
+            movieTitle={movieTitle}
+            movieOverview={movieOverview}
+            setMoviesArray={setMoviesArray}
+          />
+          : null
+      }
+      
+
+      
+      
     </div>
   );
 }

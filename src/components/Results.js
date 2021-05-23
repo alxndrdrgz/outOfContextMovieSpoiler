@@ -1,45 +1,39 @@
 import { Fragment } from 'react';
 
-const Results = ({gifsArray}) => {
+const Results = ({ gifsArray, splashState, movieTitle, movieOverview, setMoviesArray }) => {
 
-    
+    const handleClick = ()=> {
+        splashState();
+        setMoviesArray([])
+    }
+
+    console.log(gifsArray.length)
     return (
         <Fragment>
-            <h1>Intense Foot Trauma: The Movie</h1>
+            <h1>{movieTitle}</h1>
             <div className="gallery">
 
-                {/* <div className="gif-wrapper">
-                    <img src={gifUrl1} alt={gifAlt1} />
-                </div>
+                {
+                    gifsArray.map((gif) => {
+                        console.log(gif)
+                        return (
+                            <div className="gif-wrapper">
+                                <img src={gif.url} alt={gif.alt} />
+                            </div>
 
-                <div className="gif-wrapper">
-                    <img src={gifUrl2} alt={gifAlt2} />
-                </div>
-
-                <div className="gif-wrapper">
-                    <img src={gifUrl3} alt={gifAlt3} />
-                </div> */
-                gifsArray.map((gif) => {
-                    console.log(gif)
-                    return(
-                        <div className="gif-wrapper">
-                            <img src={gif.url} alt={gif.alt} />
-                        </div>
-                       
-                    )
-                })
-
+                        )
+                    })
                 }
 
             </div>
 
             <p className="movie-overview">
-                {/* {movieOverview} */}
+                {movieOverview}
             </p>
-            <button 
+            <button
                 className="clear-button"
-                // onClick={goHome}
-                >Go Back
+                onClick={handleClick}
+            >Go Back
                 </button>
         </Fragment>
     )
