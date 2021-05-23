@@ -10,31 +10,35 @@ const Results = ({ gifsArray, splashState, movieTitle, movieOverview, setMoviesA
     console.log(gifsArray.length)
     return (
         <Fragment>
-            <h1>{movieTitle}</h1>
-            <div className="gallery">
+            <div className="gallery-background">
+                <div className="wrapper">
+                    <h1>{movieTitle}</h1>
+                    <div className="gallery">
 
-                {
-                    gifsArray.map((gif) => {
-                        console.log(gif)
-                        return (
-                            <div className="gif-wrapper">
-                                <img src={gif.url} alt={gif.alt} />
-                            </div>
+                        {
+                            gifsArray.map((gif) => {
+                                console.log(gif)
+                                return (
+                                    <div className="gif-wrapper">
+                                        <img src={gif.url} alt={gif.alt} />
+                                    </div>
 
-                        )
-                    })
-                }
+                                )
+                            })
+                        }
 
+                    </div>
+
+                    <p className="movie-overview">
+                        {movieOverview}
+                    </p>
+                    <button
+                        className="clear-button"
+                        onClick={handleClick}
+                    >Go Back
+                    </button>
+                </div>
             </div>
-
-            <p className="movie-overview">
-                {movieOverview}
-            </p>
-            <button
-                className="clear-button"
-                onClick={handleClick}
-            >Go Back
-                </button>
         </Fragment>
     )
 }

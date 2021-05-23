@@ -1,0 +1,57 @@
+//Splash Page specific styles.
+
+.splash-background {
+    background-image: url('../assets/concession_stand.png');
+    background-size: cover;
+    background-position: center;
+    height: 95vh;
+    min-height: 80px;
+    
+    .splash-flex {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 100%;
+    }
+}
+
+.splash-content {
+    background-color: $trans-dark-blue;
+    width: 75%;
+    align-self: flex-end;
+    padding: 4rem;
+    margin-bottom: 80px;
+    display: flex;
+    flex-direction: column;
+
+    p {
+        width: 75%;
+        margin-left: 25%;
+        align-self: flex-end;
+    }
+
+    main:nth-child(2) > form:nth-child(1) {
+        display: flex;
+        justify-content:    space-between;
+        width: 75%;
+        margin-left: 25%;
+        margin-top: 3.5%;
+
+        input {
+            width: 80%;
+            border: none;
+        }
+
+        button {
+            width: 15%;
+            color: $white;
+            background-color: $light-blue;
+            border: $white 3px solid;
+        }
+
+        button:hover, button:focus {
+            color: $teal;
+            border: $teal 3px solid;
+        }
+    }
+}

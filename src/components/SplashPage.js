@@ -32,51 +32,58 @@ const SplashPage = ({ onSubmit, moviesArray, getKeywords, getOverview, getTitle,
 
     return (
         <Fragment>
-            <header>
-                <h1>
-                    Out of Context Movie Spoiler
-                </h1>
-                <p>
-                    The world moves too fast and you can get lost in the chaos. We’ve created an app that summarizes movie plots in 3 gifts. Lorem ipsum blah blah blah. This isn’t permanent. What is copy text even????
-                </p>
-            </header>
-            <main>
-                <form 
-                    action=""
-                    onSubmit={handleSubmit}
-                >
-                    <label htmlFor="movieInput">
-
-                    </label>
-                    <input 
-                        type="text" 
-                        id="movieInput" 
-                        name="movieInput" 
-                        value={userInput}
-                        onChange={handleChange}
-                    >
-                    </input>
-                    <button 
-                        type="submit"
-                    >
-                        Submit
-                    </button>
-                </form>
-
-                <div className="results-buttons">
-                    {moviesArray.map(movie => {
-                        return (
-                            <button
-                                key={movie.id}
-                                id={movie.id}
-                                onClick={() => {handleClick(movie)}}
+            <div className="splash-background">
+                <div className="wrapper splash-flex">
+                    <div className="splash-content">
+                        <header>
+                            <h1>
+                                Out of Context Movie Spoiler
+                            </h1>
+                            <p>
+                                The world moves too fast and you can get lost in the chaos. We’ve created an app that summarizes movie plots in 3 gifts. Lorem ipsum blah blah blah. This isn’t permanent. What is copy text even????
+                            </p>
+                        </header>
+                        <main>
+                            <form 
+                                action=""
+                                onSubmit={handleSubmit}
                             >
-                                {`${movie.title}(${movie.release_date})`}
-                            </button>
-                        )
-                    })}
+                                <label htmlFor="movieInput" className="sr-only">
+
+                                </label>
+                                <input 
+                                    type="text" 
+                                    id="movieInput" 
+                                    name="movieInput" 
+                                    value={userInput}
+                                    onChange={handleChange}
+                                    placeholder="Maybe try Blade Runner..."
+                                >
+                                </input>
+                                <button 
+                                    type="submit"
+                                >
+                                    Submit
+                                </button>
+                            </form>
+
+                            <div className="results-buttons">
+                                {moviesArray.map(movie => {
+                                    return (
+                                        <button
+                                            key={movie.id}
+                                            id={movie.id}
+                                            onClick={() => {handleClick(movie)}}
+                                        >
+                                            {`${movie.title}(${movie.release_date})`}
+                                        </button>
+                                    )
+                                })}
+                            </div>
+                        </main>
+                    </div>
                 </div>
-            </main>
+            </div>
         </Fragment>
     )
 }

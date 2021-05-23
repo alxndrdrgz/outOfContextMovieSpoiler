@@ -1,0 +1,27 @@
+@import "partials/setup";
+@import "partials/variables";
+@import "partials/typography";
+@import "partials/splashPage";
+
+//General universal styles
+
+.wrapper {
+  max-width: 1200px;
+  width: 90%;
+  margin: 0 auto;
+}
+
+body {
+  //idk about this come back and fix it later maybe??????????
+  background-color: $dark-blue;
+}
+
+footer {
+  text-align: center;
+  
+  .wrapper {
+    margin-top: 0.5%;
+  }
+
+  
+}

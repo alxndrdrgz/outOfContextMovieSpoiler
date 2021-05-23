@@ -7,8 +7,10 @@ const LoadingPage = () => {
             {
                 //  loadingState ? 
                 <div className="loading-screen">
-                    <h1>Loading... Please Wait </h1>
-                    <div>Loading animation here ☺️</div>
+                    <div className="wrapper">
+                        <h1>Loading... Please Wait </h1>
+                        <div>Loading animation here ☺️</div>
+                    </div>
                 </div>
                 // : 
                 // <div className="error-screen">
