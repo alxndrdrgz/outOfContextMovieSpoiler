@@ -49,7 +49,9 @@ function App() {
   // State that stores the keywords from the movie keyword api endpoint
   const [movieKeywords, setMovieKeywords] = useState([])
   // State that saves the gifs in an array
-  const [gifsArray, setGifsArray] = useState([])
+  const [gifsArray, setGifsArray] = useState([]);
+  // state that tracks the current page view
+  const [pageView, setPageView] = useState('splash')
 
   // Function that sets movie overview in state
   const getOverview = (overview) => {
@@ -140,21 +142,59 @@ function App() {
         })
         // set the gifsArray state to the gifInfo array
         setGifsArray(gifInfo)
+        resultsState(gifInfo)
       })
-  }, [movieKeywords])
+    }, [movieKeywords])
+    
+    
+
+  // function to set the viewState to "loading"
+  const loadingState = () => {
+    setPageView('loading')
+  }
+
+  // function to set the viewState to "results"
+  const resultsState = (gifInfo) => {
+    if(gifInfo.length > 0){
+      setPageView('results')
+    }
+  }
+
+  // function to set the viewState to "splash"
+  const splashState = () => {
+    setPageView('splash')
+  }
 
   return (
     <div>
-      <SplashPage
-        onSubmit={getMovies}
-        moviesArray={moviesArray}
-        getKeywords={getKeywords}
-        getOverview={getOverview}
-      />
-      <LoadingPage />
-      <Results
-        gifsArray={gifsArray}
-      />
+      {
+        pageView === "splash" ?
+          <SplashPage
+            onSubmit={getMovies}
+            moviesArray={moviesArray}
+            getKeywords={getKeywords}
+            getOverview={getOverview}
+            loadingState={loadingState}
+          />
+          : null
+      }
+      {
+        pageView === "loading" ?
+          <LoadingPage />
+          : null
+      }
+      {
+        pageView === "results" ?
+          <Results
+            gifsArray={gifsArray}
+            splashState={splashState}
+          />
+          : null
+      }
+      
+
+      
+      
     </div>
   );
 }

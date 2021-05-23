@@ -2,7 +2,7 @@
 import { Fragment, useState } from 'react';
 
 
-const SplashPage = ({ onSubmit, moviesArray, getKeywords, getOverview }) => {
+const SplashPage = ({ onSubmit, moviesArray, getKeywords, getOverview, loadingState }) => {
 
     //Declaring useState for form element 
     const [ userInput, setUserInput ] = useState('');
@@ -24,7 +24,8 @@ const SplashPage = ({ onSubmit, moviesArray, getKeywords, getOverview }) => {
     const handleClick = (movie) => {
       getKeywords(movie.id)
       getOverview(movie.overview)
-      
+      loadingState();
+
     }
 
     return (
