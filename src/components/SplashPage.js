@@ -33,7 +33,7 @@ const SplashPage = ({ onSubmit, moviesArray, getKeywords, getOverview, getTitle,
     return (
         <Fragment>
             <div className="splash-background">
-                <div className="wrapper">
+                <div className="wrapper splash-flex">
                     <div className="splash-content">
                         <header>
                             <h1>
@@ -48,7 +48,7 @@ const SplashPage = ({ onSubmit, moviesArray, getKeywords, getOverview, getTitle,
                                 action=""
                                 onSubmit={handleSubmit}
                             >
-                                <label htmlFor="movieInput">
+                                <label htmlFor="movieInput" className="sr-only">
 
                                 </label>
                                 <input 
@@ -57,6 +57,7 @@ const SplashPage = ({ onSubmit, moviesArray, getKeywords, getOverview, getTitle,
                                     name="movieInput" 
                                     value={userInput}
                                     onChange={handleChange}
+                                    placeholder="Maybe try Blade Runner..."
                                 >
                                 </input>
                                 <button 

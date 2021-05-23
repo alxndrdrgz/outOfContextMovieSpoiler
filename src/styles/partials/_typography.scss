@@ -14,16 +14,24 @@ footer {
     padding: 0;
 } 
 
+p {
+    line-height: 2.5rem;
+}
+
 body {
     font-family: $lato;
-    font-size: 1.8rem;
+    font-size: 2rem;
+    font-weight: 600; 
     color: $white;
 }
 
 h1 {
     font-family:$kanit;
     color: $white;
-    font-size: 5rem;
+    font-size: 6rem;
+    padding-bottom: 2%;
+    letter-spacing: 0.1rem;
+    text-align: right;
 }
 
 button {
