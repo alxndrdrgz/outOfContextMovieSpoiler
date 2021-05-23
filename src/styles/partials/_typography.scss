@@ -1,0 +1,32 @@
+//Partial for styles specific to typographical elements
+
+html {
+    font-size: 62.5%;
+}
+
+//Stripping default styling
+h1, 
+h2, 
+p, 
+button, 
+footer {
+    margin: 0;
+    padding: 0;
+} 
+
+body {
+    font-family: $lato;
+    font-size: 1.8rem;
+    color: $white;
+}
+
+h1 {
+    font-family:$kanit;
+    color: $white;
+    font-size: 5rem;
+}
+
+button {
+    font-family: $kanit;
+}
+

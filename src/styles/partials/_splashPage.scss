@@ -1,0 +1,14 @@
+//Splash Page specific styles.
+
+.splash-background {
+    background-image: url('../assets/concession_stand.png');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    min-height: 80px;
+}
+
+.splash-content {
+    background-color: $trans-dark-blue;
+    padding: 3rem;
+}
