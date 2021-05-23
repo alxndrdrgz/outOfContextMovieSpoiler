@@ -2,7 +2,7 @@ import { Fragment } from 'react';
 
 const Results = ({gifsArray}) => {
 
-    
+    console.log(gifsArray.length)
     return (
         <Fragment>
             <h1>Intense Foot Trauma: The Movie</h1>

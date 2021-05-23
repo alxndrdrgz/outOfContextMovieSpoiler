@@ -82,11 +82,11 @@ function App() {
         setMoviesArray(filteredArray);
       })
   }
-  
-  
-  
+
+
+
   console.log(moviesArray);
-  
+
   // Function to get keywords from selected movie
   const getKeywords = id => {
     axios({
@@ -97,38 +97,50 @@ function App() {
         api_key: oocms.mDbKey
       }
     })
-    .then(response => {
-      // Saving keywords to the moviesKeywords state
-      const keywords = response.data.keywords.slice(0, 3);
-      setMovieKeywords(keywords)
-    });
+      .then(response => {
+        // Saving keywords to the moviesKeywords state
+        const keywords = response.data.keywords.slice(0, 3);
+        setMovieKeywords(keywords)
+      });
   }
-  
+
   useEffect(() => {
 
     // Creating an array so we can push the results from the gifs url into it
-    const gifInfo = [];
+    let gifInfo = [];
+    // initializinga  requests array to store the promises because promise.all requires an array
+    let requests = [];
+
 
     // Calling the giphy api using the keywords saved in the movieKeywords state when the movieKeyword state changes using the dependency array
     movieKeywords.forEach(keyword => {
-      axios({
-        method: "GET",
-        url: oocms.giphyURL,
-        dataResponse: 'json',
-        params: {
-          api_key: oocms.giphyKey,
-          q: keyword.name
-        }
-      }).then(response => {
-        gifInfo.push(
-          {
-            url:response.data.data[0].images.original.url,
-            alt:response.data.data[0].title
+      // pushing the three giphy requests to a requests array
+      requests.push(
+        axios({
+          method: "GET",
+          url: oocms.giphyURL,
+          dataResponse: 'json',
+          params: {
+            api_key: oocms.giphyKey,
+            q: keyword.name
           }
-        )
+        })
+      )
+    })
+    // once all three promises have resolved, loop through the data and push it to the gifInfo array
+    Promise.all(requests)
+      .then(responses => {
+        responses.forEach(response => {
+          gifInfo.push(
+            {
+              url: response.data.data[0].images.original.url,
+              alt: response.data.data[0].title
+            }
+          )
+        })
+        // set the gifsArray state to the gifInfo array
+        setGifsArray(gifInfo)
       })
-    });
-    setGifsArray(gifInfo)
   }, [movieKeywords])
 
   return (
@@ -140,8 +152,8 @@ function App() {
         getOverview={getOverview}
       />
       <LoadingPage />
-      <Results 
-      gifsArray={gifsArray}
+      <Results
+        gifsArray={gifsArray}
       />
     </div>
   );
