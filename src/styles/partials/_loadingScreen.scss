@@ -70,18 +70,18 @@
     max-width: 70px;
     margin: 10px;
 
-    background-image: radial-gradient($white, goldenrod);
+    background-image: radial-gradient(#aaa, goldenrod);
     position: relative;
     &::before,
     &::after {
       content: '';
-      background-color: rgba(255, 255, 0, 0.6);
+      background-image: radial-gradient($white, rgba(255, 255, 0, 0.8));
 
       height: 100%;
       width: 100%;
       border-radius: 50%;
 
-      animation: flash 0.3s ease infinite alternate;
+      animation: flash 0.5s ease infinite alternate;
       position: absolute;
     }
     &::after {
@@ -91,6 +91,10 @@
       top: -10%;
       
       filter: blur(30px);
+    }
+    &:nth-of-type(even)::before,
+    &:nth-of-type(even)::after {
+      animation-delay: 0.5s;
     }
   }
   p.coming-soon {
