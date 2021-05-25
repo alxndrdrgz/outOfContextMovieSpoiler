@@ -5,7 +5,7 @@
     background-size: cover;
     background-position: center;
     height: 95vh;
-    min-height: 80px;
+    min-height: 800px;
     
     .splash-flex {
         display: flex;
@@ -30,7 +30,7 @@
         align-self: flex-end;
     }
 
-    main:nth-child(2) > form:nth-child(1) {
+    form {
         display: flex;
         justify-content:    space-between;
         width: 75%;
@@ -38,6 +38,7 @@
         margin-top: 3.5%;
 
         input {
+            padding: 10px 0px 10px 5px;
             width: 80%;
             border: none;
             padding-left: 0.5rem;
@@ -45,10 +46,10 @@
         }
 
         button {
-            width: 15%;
             color: $white;
             background-color: $light-blue;
             border: $white 3px solid;
+            padding: 10px 20px;
             border-radius: 0.3rem;
         }
 
@@ -62,8 +63,13 @@
         display: flex;
         justify-content: space-between;
         margin-top: 3rem;
+        margin-left: 25%;
+        width: 75%;
 
         button{
+            background-color: $white;
+            border: 3px solid $light-blue;
+            color: $light-blue;
             box-sizing: content-box;
         }
     }

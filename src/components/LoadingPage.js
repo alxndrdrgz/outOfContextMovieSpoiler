@@ -8,8 +8,13 @@ const LoadingPage = () => {
                 //  loadingState ? 
                 <div className="loading-screen">
                     <div className="wrapper">
-                        <h1>Loading... Please Wait </h1>
-                        <div>Loading animation here ☺️</div>
+                        <div className="animation-container">
+                            <div className="animation-bar animation-bar0"></div>
+                            <div className="animation-bar animation-bar1"></div>
+                            <div className="animation-bar animation-bar2"></div>
+                            <div className="animation-bar animation-bar3"></div>
+                        </div>
+                        <p>Coming soon...</p>
                     </div>
                 </div>
                 // : 

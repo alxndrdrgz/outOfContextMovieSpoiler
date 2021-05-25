@@ -73,7 +73,7 @@ function App() {
             id: movie.id,
             title: movie.title,
             overview: movie.overview,
-            release_date: movie.release_date
+            release_date: movie.release_date.match(/\d{4}/)
           };
         });
         setMoviesArray(filteredArray);
