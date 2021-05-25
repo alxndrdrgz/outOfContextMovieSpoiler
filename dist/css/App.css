@@ -256,14 +256,25 @@ body {
 h1 {
   font-family: "Kanit", sans-serif;
   color: #E5E5E5;
-  font-size: 6rem;
+  font-size: 5.5rem;
   padding-bottom: 2%;
   letter-spacing: 0.1rem;
   text-align: right;
 }
 
+h1 .context-style {
+  display: inline-block;
+  position: relative;
+  bottom: 2rem;
+  transform: rotate(10deg);
+  font-size: 7.5rem;
+  color: #8EF9F4;
+}
+
 button {
   font-family: "Kanit", sans-serif;
+  padding: 1rem;
+  border-radius: 0.3rem;
 }
 
 .splash-background {
@@ -309,6 +320,8 @@ button {
   padding: 10px 0px 10px 5px;
   width: 80%;
   border: none;
+  padding-left: 0.5rem;
+  border-radius: 0.3rem;
 }
 
 .splash-content form button {
@@ -316,11 +329,22 @@ button {
   background-color: #6B6EEC;
   border: #E5E5E5 3px solid;
   padding: 10px 20px;
+  border-radius: 0.3rem;
 }
 
 .splash-content form button:hover, .splash-content form button:focus {
   color: #8EF9F4;
   border: #8EF9F4 3px solid;
+}
+
+.splash-content .results-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 3rem;
+}
+
+.splash-content .results-buttons button {
+  box-sizing: content-box;
 }
 
 .loading-screen .wrapper {
@@ -491,8 +515,16 @@ button {
   }
 }
 
+@media (max-width: 580px) {
+  .splash-content header span.context-style {
+    bottom: 1rem;
+    transform: rotate(5deg);
+  }
+}
+
 @media (max-width: 500px) {
-  .splash-content h1 {
+  .splash-content h1,
+  .splash-content span.context-style {
     font-size: 5rem;
   }
   .splash-content form {
@@ -501,6 +533,9 @@ button {
   }
   .splash-content form input {
     width: 100%;
+  }
+  .splash-content form button {
+    margin-top: 20px;
   }
 }
 
@@ -520,4 +555,14 @@ footer {
 
 footer .wrapper {
   margin-top: 0.5%;
+}
+
+footer a {
+  color: #8EF9F4;
+  text-decoration: none;
+  margin-left: 5px;
+}
+
+footer a:hover {
+  text-decoration: underline;
 }

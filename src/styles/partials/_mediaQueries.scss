@@ -34,15 +34,31 @@
 
 }
 
+@media (max-width: 580px) {
+
+  .splash-content {
+    header {
+      span.context-style {
+        bottom: 1rem;
+        transform: rotate( 5deg );
+      }
+
+    }
+  }
+
+}
+
 @media (max-width: 500px) {
 
   .splash-content {
 
-    h1 {
+    h1,
+    span.context-style {
 
       font-size: 5rem;
 
     }
+
 
     form {
 
@@ -53,6 +69,10 @@
 
         width: 100%;
 
+      }
+
+      button {
+        margin-top: 20px;
       }
 
     }

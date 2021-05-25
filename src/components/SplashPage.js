@@ -37,10 +37,10 @@ const SplashPage = ({ onSubmit, moviesArray, getKeywords, getOverview, getTitle,
                     <div className="splash-content">
                         <header>
                             <h1>
-                                Out of Context Movie Spoiler
+                                Out of <span className="context-style">Context</span> Movie Spoiler
                             </h1>
                             <p>
-                                The world moves too fast and you can get lost in the chaos. We’ve created an app that summarizes movie plots in 3 gifts. Lorem ipsum blah blah blah. This isn’t permanent. What is copy text even????
+                                The world moves too fast and you can get lost in the chaos. We’ve created an app that summarizes movie plots in 3 gifs. Go ahead and enter a movie title below to get started! 
                             </p>
                         </header>
                         <main>
@@ -75,7 +75,8 @@ const SplashPage = ({ onSubmit, moviesArray, getKeywords, getOverview, getTitle,
                                             id={movie.id}
                                             onClick={() => {handleClick(movie)}}
                                         >
-                                            {`${movie.title}(${movie.release_date})`}
+                                            {`${movie.title}
+                                            (${movie.release_date})`}
                                         </button>
                                     )
                                 })}
