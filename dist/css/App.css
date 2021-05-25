@@ -282,7 +282,7 @@ button {
   background-size: cover;
   background-position: center;
   height: 95vh;
-  min-height: 80px;
+  min-height: 800px;
 }
 
 .splash-background .splash-flex {
@@ -341,9 +341,14 @@ button {
   display: flex;
   justify-content: space-between;
   margin-top: 3rem;
+  margin-left: 25%;
+  width: 75%;
 }
 
 .splash-content .results-buttons button {
+  background-color: #E5E5E5;
+  border: 3px solid #6B6EEC;
+  color: #6B6EEC;
   box-sizing: content-box;
 }
 
@@ -368,6 +373,7 @@ button {
   height: 60vw;
   max-height: 400px;
   width: 100%;
+  max-width: 500px;
 }
 
 .animation-container .animation-bar {
@@ -393,97 +399,6 @@ button {
   animation-delay: 1.5s;
 }
 
-.light-strip-container {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-}
-
-.light-strip-container .light-strip-top,
-.light-strip-container .light-strip-left,
-.light-strip-container .light-strip-right,
-.light-strip-container .light-strip-bottom {
-  display: flex;
-}
-
-.light-strip-container .light-strip-bottom {
-  flex-direction: row-reverse;
-}
-
-.light-strip-container .light-strip-sides {
-  display: flex;
-  justify-content: space-between;
-}
-
-.light-strip-container .light-strip-left {
-  flex-direction: column-reverse;
-}
-
-.light-strip-container .light-strip-right {
-  flex-direction: column;
-}
-
-.light-strip-container .light-strip-top,
-.light-strip-container .light-strip-sides,
-.light-strip-container .light-strip-bottom {
-  width: 100%;
-}
-
-.light-strip-container .light-bulb {
-  border-radius: 50%;
-  height: 5vw;
-  max-height: 70px;
-  width: 5vw;
-  max-width: 70px;
-  margin: 10px;
-  background-image: radial-gradient(#aaa, goldenrod);
-  position: relative;
-}
-
-.light-strip-container .light-bulb::before, .light-strip-container .light-bulb::after {
-  content: '';
-  background-image: radial-gradient(#E5E5E5, rgba(255, 255, 0, 0.8));
-  height: 100%;
-  width: 100%;
-  border-radius: 50%;
-  animation: flash 0.5s ease infinite alternate;
-  position: absolute;
-}
-
-.light-strip-container .light-bulb::after {
-  height: 120%;
-  width: 120%;
-  left: -10%;
-  top: -10%;
-  filter: blur(30px);
-}
-
-.light-strip-container .light-bulb:nth-of-type(even)::before, .light-strip-container .light-bulb:nth-of-type(even)::after {
-  animation-delay: 0.5s;
-}
-
-.light-strip-container p.coming-soon {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  margin: 0;
-  width: 75%;
-  font-size: calc(3rem + 2vw);
-  line-height: 5rem;
-  text-align: center;
-  text-transform: capitalize;
-}
-
-@keyframes flash {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 0.8;
-  }
-}
-
 @keyframes stretchAndSquish {
   from {
     transform: scaleY(1);
@@ -501,9 +416,11 @@ button {
   }
   .splash-content header p {
     margin: 0;
+    text-align: center;
     width: 100%;
   }
-  .splash-content form {
+  .splash-content form,
+  .splash-content .results-buttons {
     margin-left: 0;
     width: 100%;
   }
@@ -536,6 +453,9 @@ button {
   }
   .splash-content form button {
     margin-top: 20px;
+  }
+  .splash-content .results-buttons {
+    flex-direction: column;
   }
 }
 

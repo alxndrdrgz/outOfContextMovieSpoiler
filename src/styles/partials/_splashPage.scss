@@ -5,7 +5,7 @@
     background-size: cover;
     background-position: center;
     height: 95vh;
-    min-height: 80px;
+    min-height: 800px;
     
     .splash-flex {
         display: flex;
@@ -63,8 +63,13 @@
         display: flex;
         justify-content: space-between;
         margin-top: 3rem;
+        margin-left: 25%;
+        width: 75%;
 
         button{
+            background-color: $white;
+            border: 3px solid $light-blue;
+            color: $light-blue;
             box-sizing: content-box;
         }
     }

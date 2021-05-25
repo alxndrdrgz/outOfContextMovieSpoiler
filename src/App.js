@@ -3,7 +3,6 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import SplashPage from './components/SplashPage.js';
 import LoadingPage from './components/LoadingPage.js';
-import LoadingPage2 from './components/LoadingPage2.js';
 import Results from './components/Results.js';
 import Footer from './components/Footer';
 
@@ -74,7 +73,7 @@ function App() {
             id: movie.id,
             title: movie.title,
             overview: movie.overview,
-            release_date: movie.release_date
+            release_date: movie.release_date.match(/\d{4}/)
           };
         });
         setMoviesArray(filteredArray);
@@ -177,7 +176,7 @@ function App() {
       }
       {
         pageView === "loading" ?
-          <LoadingPage2 />
+          <LoadingPage />
           : null
       }
       {

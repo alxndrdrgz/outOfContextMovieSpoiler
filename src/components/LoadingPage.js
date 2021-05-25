@@ -14,7 +14,7 @@ const LoadingPage = () => {
                             <div className="animation-bar animation-bar2"></div>
                             <div className="animation-bar animation-bar3"></div>
                         </div>
-                        <p>Loading...</p>
+                        <p>Coming soon...</p>
                     </div>
                 </div>
                 // : 

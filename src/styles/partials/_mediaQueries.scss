@@ -7,10 +7,12 @@
       }
        p {
         margin: 0;
+        text-align: center;
         width: 100%;
       }
     }
-    form {
+    form,
+    .results-buttons {
       
       margin-left: 0;
       width: 100%;
@@ -77,7 +79,9 @@
 
     }
 
-    
+    .results-buttons {
+      flex-direction: column;
+    }    
 
   }
 
