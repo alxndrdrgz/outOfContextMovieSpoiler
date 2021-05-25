@@ -23,5 +23,15 @@ footer {
     margin-top: 0.5%;
   }
 
+  a {
+    color: $teal;
+    text-decoration: none;
+    margin-left: 5px;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
   
 }
