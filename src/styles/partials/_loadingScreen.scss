@@ -127,8 +127,10 @@
 @keyframes stretchAndSquish {
   from {
     transform: scaleY(1);
+    background-color: $light-blue;
   }
   to {
     transform: scaleY(-1);
+    background-color: $teal;
   }
 }

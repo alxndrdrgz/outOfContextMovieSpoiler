@@ -30,7 +30,7 @@
         align-self: flex-end;
     }
 
-    main:nth-child(2) > form:nth-child(1) {
+    form {
         display: flex;
         justify-content:    space-between;
         width: 75%;
@@ -38,15 +38,16 @@
         margin-top: 3.5%;
 
         input {
+            padding: 10px 0px 10px 5px;
             width: 80%;
             border: none;
         }
 
         button {
-            width: 15%;
             color: $white;
             background-color: $light-blue;
             border: $white 3px solid;
+            padding: 10px 20px;
         }
 
         button:hover, button:focus {
