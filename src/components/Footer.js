@@ -4,7 +4,7 @@ import { Fragment } from 'react';
 const Footer = () => {
     const alexUrl = "https://alxndrdrgz.com"
     const geoffUrl = "https://geoffreypayton.com"
-    const samUrl = ""
+    const samUrl = "https://samwells.dev"
     const williamUrl = "https://WilliamScript.com"
     const junoUrl = "https://junocollege.com"
 

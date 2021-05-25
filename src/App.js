@@ -10,7 +10,8 @@ import Footer from './components/Footer';
 const oocms = {};
 
 //Variable declaring the Giphy API key
-oocms.giphyKey = `J0Mq3DGHVu2HtcdoS7QMvJX0qMJ359VA`;
+oocms.giphyKey = '2hsXOQxDVBHbq5Ok1353va0m8wTJvV3j'
+// `J0Mq3DGHVu2HtcdoS7QMvJX0qMJ359VA`;
 // Variable to store Giphy endpoint
 oocms.giphyURL = 'https://api.giphy.com/v1/gifs/search';
 //Variable declaring Movie DB key

@@ -3,6 +3,7 @@
 @import "partials/typography";
 @import "partials/splashPage";
 @import "partials/loadingScreen";
+@import "partials/resultsPage";
 @import "partials/mediaQueries";
 
 //General universal styles
@@ -20,7 +21,6 @@ body {
 
 footer {
   text-align: center;
-  
   .wrapper {
     margin-top: 0.5%;
   }

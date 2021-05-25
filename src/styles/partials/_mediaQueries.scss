@@ -24,6 +24,19 @@
   
 }
 
+@media(max-width: 768px) {
+  .gallery{
+    flex-direction: column;
+    max-height:fit-content;
+    .gif-wrapper{
+      width: 100%
+    }
+  }
+  .gallery-background{
+    height:fit-content;
+  }
+}
+
 @media (max-width: 630px) {
 
   .splash-content {
@@ -86,3 +99,4 @@
   }
 
 }
+
