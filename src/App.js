@@ -46,6 +46,8 @@ function App() {
   // state that checks to see if there are any movies in the filteredArray.
   const [noMovies, setNoMovies ] = useState(false)
 
+  const [noKeywords, setNoKeywords ] = useState(false)
+
   // Function that sets movie overview in state
   const getOverview = (overview) => {
     setMovieOverview(overview)
@@ -104,25 +106,34 @@ function App() {
       }
     })
       .then(response => {
-        // Saving keywords to the moviesKeywords state
-        const randomIndex = Math.floor(Math.random() * response.data.keywords.length);
-        
-        // ! THIS IS EXPERIMENTAL
-        const keywordsArray = [];
-        const copiedKeywords = [...response.data.keywords]
-        for (let i = 0; i < 3; i++) {
-          const newRandom = Math.floor(Math.random() * copiedKeywords.length)
-          const newKeyword = copiedKeywords.splice(newRandom, 1);
-          keywordsArray.push(newKeyword[0]);
+
+        if(response.data.keywords.length < 3) {
+          setTimeout( () =>{setPageView("splash")}, 1000)
+          
+          setNoKeywords(true)
         }
-        const keywords = response.data.keywords.slice(randomIndex, randomIndex + 3);
-        console.log('KeywordsArray:', keywordsArray);
-        setMovieKeywords(keywordsArray);
-        // ! THE MADNESS END HERE
-        
-        console.log('Keywords:', keywords);
-        // setMovieKeywords(keywords);
-      });
+        else{
+
+          // Saving keywords to the moviesKeywords state
+          const randomIndex = Math.floor(Math.random() * response.data.keywords.length);
+          
+          // ! THIS IS EXPERIMENTAL
+          const keywordsArray = [];
+          const copiedKeywords = [...response.data.keywords]
+          for (let i = 0; i < 3; i++) {
+            const newRandom = Math.floor(Math.random() * copiedKeywords.length)
+            const newKeyword = copiedKeywords.splice(newRandom, 1);
+            keywordsArray.push(newKeyword[0]);
+          }
+          const keywords = response.data.keywords.slice(randomIndex, randomIndex + 3);
+          console.log('KeywordsArray:', keywordsArray);
+          setMovieKeywords(keywordsArray);
+          // ! THE MADNESS END HERE
+          
+          console.log('Keywords:', keywords);
+          // setMovieKeywords(keywords);
+        }
+        });
   }
 
   useEffect(() => {
@@ -131,7 +142,6 @@ function App() {
     let gifInfo = [];
     // initializinga  requests array to store the promises because promise.all requires an array
     let requests = [];
-
 
     // Calling the giphy api using the keywords saved in the movieKeywords state when the movieKeyword state changes using the dependency array
     movieKeywords.forEach(keyword => {
@@ -143,7 +153,8 @@ function App() {
           dataResponse: 'json',
           params: {
             api_key: oocms.giphyKey,
-            q: keyword.name
+            q: keyword.name,
+            rating: "pg-13"
           }
         })
       )
@@ -194,6 +205,7 @@ function App() {
       {
         pageView === "splash" ?
           <SplashPage
+            noKeywords={noKeywords}
             noMovies={noMovies}
             onSubmit={getMovies}
             moviesArray={moviesArray}

@@ -3,7 +3,7 @@ import { getByTitle } from '@testing-library/dom';
 import { Fragment, useState } from 'react';
 
 
-const SplashPage = ({ noMovies, onSubmit, moviesArray, getKeywords, getOverview, getTitle, loadingState }) => {
+const SplashPage = ({noKeywords, noMovies, onSubmit, moviesArray, getKeywords, getOverview, getTitle, loadingState }) => {
 
   //Declaring useState for form element 
   const [userInput, setUserInput] = useState('');
@@ -52,14 +52,14 @@ const SplashPage = ({ noMovies, onSubmit, moviesArray, getKeywords, getOverview,
 
                 </label>
                 <input
-                  className={noMovies? "no-movies" : null}
+                  className={noMovies || noKeywords? "no-movies" : null}
                   required
                   type="text"
                   id="movieInput"
                   name="movieInput"
                   value={userInput}
                   onChange={handleChange}
-                  placeholder={ noMovies? "Please enter a valid movie!":
+                  placeholder={ noMovies || noKeywords? "Please enter a valid movie!":
                   "Maybe try Blade Runner..."}
                 >
                 </input>
