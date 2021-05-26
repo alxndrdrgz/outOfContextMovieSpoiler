@@ -128,11 +128,16 @@ function App() {
     // once all three promises have resolved, loop through the data and push it to the gifInfo array
     Promise.all(requests)
       .then(responses => {
-        responses.forEach(response => {
+        responses.forEach( (response) => {
+          // Creating a test to determine if the current image has landscape dimensions
+          const isLandscape = (image) => image.images.original.width / image.images.original.height >= 1.2;
+          // Loop through returned images and return first index which passes the test
+          const landscapeIndex = response.data.data.findIndex(isLandscape);
           gifInfo.push(
             {
-              url: response.data.data[0].images.original.url,
-              alt: response.data.data[0].title
+              // Creating new object containing the image url and title, and pushing the object to gifInfo array
+              url: response.data.data[landscapeIndex].images.original.url,
+              alt: response.data.data[landscapeIndex].title
             }
           )
         })
