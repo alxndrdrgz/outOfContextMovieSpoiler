@@ -43,6 +43,8 @@ function App() {
   const [gifsArray, setGifsArray] = useState([]);
   // state that tracks the current page view
   const [pageView, setPageView] = useState('splash');
+  // state that checks to see if there are any movies in the filteredArray.
+  const [noMovies, setNoMovies ] = useState(false)
 
   // Function that sets movie overview in state
   const getOverview = (overview) => {
@@ -57,33 +59,39 @@ function App() {
 
   // Function to take user input and make call to Movie DB API
   const getMovies = input => {
-    axios({
-      url: oocms.mDbTitleURL,
-      method: 'GET',
-      dataResponse: 'json',
-      params: {
-        api_key: oocms.mDbKey,
-        query: input
-      }
-    })
-      .then(response => {
-        const resultsArray = response.data.results.slice(0, 3);
-        // Mapping through the results of the api call and saving a simplified version of the data and saving it the the moviesArray
-        const filteredArray = resultsArray.map(movie => {
-          return {
-            id: movie.id,
-            title: movie.title,
-            overview: movie.overview,
-            release_date: movie.release_date.match(/\d{4}/)
-          };
-        });
-        setMoviesArray(filteredArray);
+    // Added an if statement to check if the input was an empty string using .trim() method
+    if (input.trim() === ""){
+      setNoMovies(true);
+    }
+    else{
+      setNoMovies(false)
+      axios({
+        url: oocms.mDbTitleURL,
+        method: 'GET',
+        dataResponse: 'json',
+        params: {
+          api_key: oocms.mDbKey,
+          query: input
+        }
       })
+        .then(response => {
+          const resultsArray = response.data.results.slice(0, 3);
+          // Mapping through the results of the api call and saving a simplified version of the data and saving it the the moviesArray
+          const filteredArray = resultsArray.map(movie => {
+            return {
+              id: movie.id,
+              title: movie.title,
+              overview: movie.overview,
+              release_date: movie.release_date.match(/\d{4}/)
+            };
+          });
+          // Checking to see if the filteredArray has any movies in it with ternery operator.
+          filteredArray.length === 0 ? 
+          setNoMovies(true) :
+          setMoviesArray(filteredArray);
+        })
+    }
   }
-
-
-
-  console.log(moviesArray);
 
   // Function to get keywords from selected movie
   const getKeywords = id => {
@@ -186,6 +194,7 @@ function App() {
       {
         pageView === "splash" ?
           <SplashPage
+            noMovies={noMovies}
             onSubmit={getMovies}
             moviesArray={moviesArray}
             getKeywords={getKeywords}
