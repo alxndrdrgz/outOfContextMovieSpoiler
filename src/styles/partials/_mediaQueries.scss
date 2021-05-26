@@ -34,6 +34,12 @@
   }
   .gallery-background{
     height:fit-content;
+    h1,
+    .gif-wrapper {
+    
+      box-shadow: 15px 15px 0 $teal;
+    
+    }
   }
 }
 
@@ -41,9 +47,7 @@
 
   .splash-content {
 
-
     width: 100%;
-
 
   }
 
@@ -95,6 +99,17 @@
     .results-buttons {
       flex-direction: column;
     }    
+
+  }
+
+  .gallery-background {
+
+    p.movie-overview {
+
+      font-size: 1.6rem;
+      padding: 20px;
+
+    }
 
   }
 
