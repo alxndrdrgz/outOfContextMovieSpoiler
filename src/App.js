@@ -97,8 +97,23 @@ function App() {
     })
       .then(response => {
         // Saving keywords to the moviesKeywords state
-        const keywords = response.data.keywords.slice(0, 3);
-        setMovieKeywords(keywords)
+        const randomIndex = Math.floor(Math.random() * response.data.keywords.length);
+        
+        // ! THIS IS EXPERIMENTAL
+        const keywordsArray = [];
+        const copiedKeywords = [...response.data.keywords]
+        for (let i = 0; i < 3; i++) {
+          const newRandom = Math.floor(Math.random() * copiedKeywords.length)
+          const newKeyword = copiedKeywords.splice(newRandom, 1);
+          keywordsArray.push(newKeyword[0]);
+        }
+        const keywords = response.data.keywords.slice(randomIndex, randomIndex + 3);
+        console.log('KeywordsArray:', keywordsArray);
+        // setMovieKeywords(keywordsArray);
+        // ! THE MADNESS END HERE
+        
+        console.log('Keywords:', keywords);
+        setMovieKeywords(keywords);
       });
   }
 
