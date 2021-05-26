@@ -20,7 +20,7 @@ const Results = ({ gifsArray, splashState, movieTitle, movieOverview, setMoviesA
                                 console.log(gif)
                                 return (
                                     <div className="gif-wrapper">
-                                        <img src={gif.url} alt={gif.alt} />
+                                        <img src={gif.url} alt={ gif.alt? gif.alt : `A gif representing ${movieTitle}`} />
                                     </div>
 
                                 )
