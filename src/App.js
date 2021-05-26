@@ -97,8 +97,23 @@ function App() {
     })
       .then(response => {
         // Saving keywords to the moviesKeywords state
-        const keywords = response.data.keywords.slice(0, 3);
-        setMovieKeywords(keywords)
+        const randomIndex = Math.floor(Math.random() * response.data.keywords.length);
+        
+        // ! THIS IS EXPERIMENTAL
+        const keywordsArray = [];
+        const copiedKeywords = [...response.data.keywords]
+        for (let i = 0; i < 3; i++) {
+          const newRandom = Math.floor(Math.random() * copiedKeywords.length)
+          const newKeyword = copiedKeywords.splice(newRandom, 1);
+          keywordsArray.push(newKeyword[0]);
+        }
+        const keywords = response.data.keywords.slice(randomIndex, randomIndex + 3);
+        console.log('KeywordsArray:', keywordsArray);
+        setMovieKeywords(keywordsArray);
+        // ! THE MADNESS END HERE
+        
+        console.log('Keywords:', keywords);
+        // setMovieKeywords(keywords);
       });
   }
 
@@ -128,11 +143,16 @@ function App() {
     // once all three promises have resolved, loop through the data and push it to the gifInfo array
     Promise.all(requests)
       .then(responses => {
-        responses.forEach(response => {
+        responses.forEach( (response) => {
+          // Creating a test to determine if the current image has landscape dimensions
+          const isLandscape = (image) => image.images.original.width / image.images.original.height >= 1.2;
+          // Loop through returned images and return first index which passes the test
+          const landscapeIndex = response.data.data.findIndex(isLandscape);
           gifInfo.push(
             {
-              url: response.data.data[0].images.original.url,
-              alt: response.data.data[0].title
+              // Creating new object containing the image url and title, and pushing the object to gifInfo array
+              url: response.data.data[landscapeIndex].images.original.url,
+              alt: response.data.data[landscapeIndex].title
             }
           )
         })
