@@ -1,7 +1,9 @@
 .gallery-background{
     background-color: $white;
+    background-image: url('../assets/movie-theatre.png');
+    background-size: cover;
+    background-position: center;
     padding-top: 20px;
-    // height: 95vh;
     .wrapper{
         height: 100%;
         display: flex;
@@ -14,7 +16,6 @@
 
 .gallery-background h1 {
     text-align: center;
-    border: solid 1px white;
     background-color: $dark-blue;
     padding: 30px;
     margin: 30px 0;
@@ -44,7 +45,7 @@
 
 .movie-overview{
     margin: 30px auto;
-    background-color: $trans-light-blue;
+    background-color: $light-blue;
     color: $black;
     padding: 40px;
     text-align: center;
