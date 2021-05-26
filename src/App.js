@@ -109,11 +109,11 @@ function App() {
         }
         const keywords = response.data.keywords.slice(randomIndex, randomIndex + 3);
         console.log('KeywordsArray:', keywordsArray);
-        // setMovieKeywords(keywordsArray);
+        setMovieKeywords(keywordsArray);
         // ! THE MADNESS END HERE
         
         console.log('Keywords:', keywords);
-        setMovieKeywords(keywords);
+        // setMovieKeywords(keywords);
       });
   }
 
