@@ -85,7 +85,7 @@ function App() {
               id: movie.id,
               title: movie.title,
               overview: movie.overview,
-              release_date: movie.release_date.match(/\d{4}/)
+              release_date: movie.release_date ? movie.release_date.match(/\d{4}/) : "Unknown"
             };
           });
           // Checking to see if the filteredArray has any movies in it with ternery operator.
