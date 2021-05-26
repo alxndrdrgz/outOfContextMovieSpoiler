@@ -67,6 +67,7 @@ function App() {
     }
     else{
       setNoMovies(false)
+      setNoKeywords(false)
       axios({
         url: oocms.mDbTitleURL,
         method: 'GET',
