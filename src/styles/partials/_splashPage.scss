@@ -43,8 +43,11 @@
             border: none;
             padding-left: 0.5rem;
             border-radius: 0.3rem;
-        }
 
+            
+        }
+        
+        
         button {
             color: $white;
             background-color: $light-blue;
@@ -52,15 +55,20 @@
             padding: 10px 20px;
             border-radius: 0.3rem;
         }
-
+        
         button:hover, button:focus {
             color: $teal;
             border: $teal 3px solid;
         }
-    
+        
     }
+    .no-movies::placeholder {
+        color:$darker-orange;
+        opacity: 1;
+    }
+
      .results-buttons {
-        display: flex;
+         display: flex;
         justify-content: space-between;
         margin-top: 3rem;
         margin-left: 25%;
