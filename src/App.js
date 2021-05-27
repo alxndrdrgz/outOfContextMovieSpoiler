@@ -50,12 +50,10 @@ function App() {
   // Function that sets movie overview in state
   const getOverview = (overview) => {
     setMovieOverview(overview)
-    console.log(movieOverview)
   }
-
+    
   const getTitle = (title) => {
     setMovieTitle(title);
-    console.log(movieTitle);
   }
 
   // Function to take user input and make call to Movie DB API
@@ -126,12 +124,9 @@ function App() {
             keywordsArray.push(newKeyword[0]);
           }
           const keywords = response.data.keywords.slice(randomIndex, randomIndex + 3);
-          console.log('KeywordsArray:', keywordsArray);
           setMovieKeywords(keywordsArray);
           // ! THE MADNESS END HERE
           
-          console.log('Keywords:', keywords);
-          // setMovieKeywords(keywords);
         }
         });
   }

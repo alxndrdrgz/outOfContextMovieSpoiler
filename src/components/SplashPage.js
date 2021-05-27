@@ -3,7 +3,7 @@
 import { Fragment, useState } from 'react';
 
 
-const SplashPage = ({noKeywords, noMovies, onSubmit, moviesArray, getKeywords, getOverview, getTitle, loadingState }) => {
+const SplashPage = ({ noKeywords, noMovies, onSubmit, moviesArray, getKeywords, getOverview, getTitle, loadingState }) => {
 
   //Declaring useState for form element 
   const [userInput, setUserInput] = useState('');
@@ -52,15 +52,15 @@ const SplashPage = ({noKeywords, noMovies, onSubmit, moviesArray, getKeywords, g
 
                 </label>
                 <input
-                  className={noMovies || noKeywords? "no-movies" : null}
+                  className={noMovies || noKeywords ? "no-movies" : null}
                   required
                   type="text"
                   id="movieInput"
                   name="movieInput"
                   value={userInput}
                   onChange={handleChange}
-                  placeholder={noMovies || noKeywords? "Uh Oh!!!" : "Maybe try Blade Runner..."}
-                  >
+                  placeholder={noMovies || noKeywords ? "Uh Oh!!!" : "Maybe try Blade Runner..."}
+                >
                 </input>
                 <button
                   type="submit"
@@ -70,7 +70,7 @@ const SplashPage = ({noKeywords, noMovies, onSubmit, moviesArray, getKeywords, g
               </form>
 
               <div className="results-buttons">
-                {noMovies || noKeywords? <p className="error-message">Insufficient data, try another title!</p> : 
+                {noMovies || noKeywords ? <p className="error-message">Insufficient data, try another title!</p> :
                   moviesArray.map(movie => {
                     return (
                       <button
