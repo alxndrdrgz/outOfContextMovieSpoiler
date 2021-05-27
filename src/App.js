@@ -102,9 +102,6 @@ function App() {
       url: `https://api.themoviedb.org/3/movie/${id}/keywords`,
       method: 'GET',
       dataResponse: 'json',
-      proxy: {
-        host: 'http://proxy.hackeryou.com'
-      },
       params: {
         api_key: oocms.mDbKey
       }
