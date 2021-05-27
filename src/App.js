@@ -111,22 +111,15 @@ function App() {
           setNoKeywords(true)
         }
         else{
-
-          // Saving keywords to the moviesKeywords state
-          const randomIndex = Math.floor(Math.random() * response.data.keywords.length);
-          
-          // ! THIS IS EXPERIMENTAL
           const keywordsArray = [];
           const copiedKeywords = [...response.data.keywords]
           for (let i = 0; i < 3; i++) {
-            const newRandom = Math.floor(Math.random() * copiedKeywords.length)
-            const newKeyword = copiedKeywords.splice(newRandom, 1);
+            // Get a random index number from the copiedKeywords array, retrieve that keyword and remove it from the array
+            const randomIndex = Math.floor(Math.random() * copiedKeywords.length)
+            const newKeyword = copiedKeywords.splice(randomIndex, 1);
             keywordsArray.push(newKeyword[0]);
           }
-          const keywords = response.data.keywords.slice(randomIndex, randomIndex + 3);
           setMovieKeywords(keywordsArray);
-          // ! THE MADNESS END HERE
-          
         }
         });
   }
