@@ -8,9 +8,10 @@
     min-height: 800px;
     
     .splash-flex {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
+        // display: flex;
+        // flex-direction: column;
+        // justify-content: center;
+        @include flex(row, center, center);
         height: 100%;
     }
 }
