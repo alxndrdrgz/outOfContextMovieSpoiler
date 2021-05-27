@@ -17,7 +17,7 @@ oocms.giphyURL = 'https://api.giphy.com/v1/gifs/search';
 //Variable declaring Movie DB key
 oocms.mDbKey = `5b4cfcb5bfcdfe63f43999ac1acbfb53`;
 // Variable to store Movie DB endpoint
-oocms.mDbTitleURL = 'https://api.themoviedb.org/3/search/movie/';
+oocms.mDbTitleURL = 'http://api.themoviedb.org/3/search/movie/';
 // oocms.movieDbKeywordURL = 'https://api.themoviedb.org/3/movie/{movieID}/keywords';
 
 
