@@ -172,7 +172,8 @@ function App() {
               {
                 // Creating new object containing the image url and title, and pushing the object to gifInfo array
                 url: response.data.data[landscapeIndex].images.original.url,
-                alt: response.data.data[landscapeIndex].title
+                alt: response.data.data[landscapeIndex].title,
+                key: response.data.data[landscapeIndex].id
               }
             )
           } else {
@@ -180,7 +181,8 @@ function App() {
               {
                 // Creating new object containing the image url and title, and pushing the object to gifInfo array
                 url: response.data.data[0].images.original.url,
-                alt: response.data.data[0].title
+                alt: response.data.data[0].title,
+                key: response.data.data[0].id
               }
             )
           }

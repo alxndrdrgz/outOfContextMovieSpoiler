@@ -4,7 +4,7 @@
     background-image: url('../assets/concession_stand.png');
     background-size: cover;
     background-position: center;
-    height: 95vh;
+    height: 90vh;
     min-height: 800px;
     
     .splash-flex {
@@ -54,6 +54,7 @@
             border: $white 3px solid;
             padding: 10px 20px;
             border-radius: 0.3rem;
+            font-weight: 700;
         }
         
         button:hover, button:focus {
@@ -74,6 +75,8 @@
         margin-left: 25%;
         width: 75%;
 
+        
+
         .error-message {
         margin-left: 0;
         width: 100%;
@@ -86,5 +89,10 @@
             color: $light-blue;
             box-sizing: content-box;
         }
+
+        button:hover, button:focus{
+            background-color: $teal;
+        }
     }
 }
+

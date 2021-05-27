@@ -1,4 +1,5 @@
 import { Fragment } from 'react';
+import giphyLogo from '../styles/assets/giphy-logo.png'
 
 const Results = ({ gifsArray, splashState, movieTitle, movieOverview, setMoviesArray }) => {
 
@@ -19,7 +20,7 @@ const Results = ({ gifsArray, splashState, movieTitle, movieOverview, setMoviesA
                             gifsArray.map((gif) => {
                                 console.log(gif)
                                 return (
-                                    <div className="gif-wrapper">
+                                    <div key={gif.key} className="gif-wrapper">
                                         <img src={gif.url} alt={gif.alt ? gif.alt : `A gif representing ${movieTitle}`} />
                                     </div>
 
@@ -29,9 +30,11 @@ const Results = ({ gifsArray, splashState, movieTitle, movieOverview, setMoviesA
 
                     </div>
 
-                    <p className="movie-overview">
-                        {movieOverview}
-                    </p>
+                    <div className="movie-overview">
+                        <p>{movieOverview}</p>
+                        <a href=""><img className="giphy-logo" src={giphyLogo} alt="Powered by Giphy"></img></a>
+                        
+                    </div>
                     <button
                         className="clear-button"
                         onClick={handleClick}
