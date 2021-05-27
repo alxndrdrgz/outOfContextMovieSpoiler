@@ -356,6 +356,7 @@ button {
   border: #E5E5E5 3px solid;
   padding: 10px 20px;
   border-radius: 0.3rem;
+  font-weight: 700;
 }
 
 .splash-content form button:hover, .splash-content form button:focus {
@@ -407,6 +408,10 @@ button {
   color: #6B6EEC;
   -webkit-box-sizing: content-box;
           box-sizing: content-box;
+}
+
+.splash-content .results-buttons button:hover, .splash-content .results-buttons button:focus {
+  background-color: #8EF9F4;
 }
 
 .loading-screen .wrapper {
@@ -583,6 +588,13 @@ button.clear-button {
   width: 200px;
   text-align: center;
   margin-bottom: 30px;
+  font-weight: 700;
+}
+
+button.clear-button:hover,
+button.clear-button:focus {
+  background-color: #8EF9F4;
+  color: #111;
 }
 
 .giphy-logo {

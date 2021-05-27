@@ -22,7 +22,7 @@ const Footer = () => {
                         <a href={junoUrl}>Juno College</a>
                     </p>
                     <p className="api-attribution">
-                        This product uses the <span className="sr-only">TMDb API </span> <a href="https://www.themoviedb.org/"><img class="tmdb-logo" src={tmdbLogo} alt="logo for The Movie Database"></img></a> API but is not endorsed or certified by TMDB.
+                        This product uses the <span className="sr-only">TMDb API </span> <a href="https://www.themoviedb.org/"><img className="tmdb-logo" src={tmdbLogo} alt="logo for The Movie Database"></img></a> API but is not endorsed or certified by TMDB.
                     </p>
 
                     <p className="icon-attribution">Icon created by Larea from Noun Project</p>

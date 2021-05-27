@@ -20,7 +20,7 @@ const Results = ({ gifsArray, splashState, movieTitle, movieOverview, setMoviesA
                             gifsArray.map((gif) => {
                                 console.log(gif)
                                 return (
-                                    <div className="gif-wrapper">
+                                    <div key={gif.key} className="gif-wrapper">
                                         <img src={gif.url} alt={gif.alt ? gif.alt : `A gif representing ${movieTitle}`} />
                                     </div>
 
@@ -32,7 +32,7 @@ const Results = ({ gifsArray, splashState, movieTitle, movieOverview, setMoviesA
 
                     <div className="movie-overview">
                         <p>{movieOverview}</p>
-                        <a href=""><img class="giphy-logo" src={giphyLogo} alt="Powered by Giphy"></img></a>
+                        <a href=""><img className="giphy-logo" src={giphyLogo} alt="Powered by Giphy"></img></a>
                         
                     </div>
                     <button
