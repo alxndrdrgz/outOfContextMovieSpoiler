@@ -1,10 +1,11 @@
 .loading-screen {
   .wrapper {
+    @include flex(column, center, center);
     height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    // display: flex;
+    // flex-direction: column;
+    // align-items: center;
+    // justify-content: center;
     p {
       font-size: 3rem;
       letter-spacing: 5px;
@@ -14,9 +15,10 @@
 }
 
 .animation-container {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
+  // display: flex;
+  // align-items: flex-end;
+  // justify-content: space-between;
+  @include flex(row, flex-end, space-between);
   height: 60vw;
   max-height: 400px;
   width: 100%;
@@ -29,11 +31,10 @@
   }
   @for $i from 0 through 3 {
     .animation-bar#{$i} {
-      animation-delay: (0.5s * $i)
+      animation-delay: (0.2s * $i)
     }
   }
 }
-
 
 @keyframes stretchAndSquish {
   from {

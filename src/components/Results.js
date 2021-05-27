@@ -30,7 +30,7 @@ const Results = ({ gifsArray, splashState, movieTitle, movieOverview, setMoviesA
 
                     <div className="movie-overview">
                         <p>{movieOverview}</p>
-                        <a href=""><img className="giphy-logo" src={giphyLogo} alt="Powered by Giphy"></img></a>
+                        <a href="https://developers.giphy.com/"><img className="giphy-logo" src={giphyLogo} alt="Powered by Giphy"></img></a>
                         
                     </div>
                     <button
