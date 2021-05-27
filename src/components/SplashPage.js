@@ -1,5 +1,5 @@
 //SplashPage.js component containing header, description, and form inputs
-import { getByTitle } from '@testing-library/dom';
+// import { getByTitle } from '@testing-library/dom';
 import { Fragment, useState } from 'react';
 
 

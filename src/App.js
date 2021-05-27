@@ -244,7 +244,7 @@ function App() {
           : null
       }
       {
-        pageView != "loading" ? 
+        pageView !== "loading" ? 
         <Footer />
         : null
       }
