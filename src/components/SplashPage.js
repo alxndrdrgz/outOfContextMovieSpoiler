@@ -59,7 +59,7 @@ const SplashPage = ({noKeywords, noMovies, onSubmit, moviesArray, getKeywords, g
                   name="movieInput"
                   value={userInput}
                   onChange={handleChange}
-                  placeholder={noMovies || noKeywords? "Insufficient data!" : "Maybe try Blade Runner..."}
+                  placeholder={noMovies || noKeywords? "Uh Oh!!!" : "Maybe try Blade Runner..."}
                   >
                 </input>
                 <button
@@ -70,18 +70,20 @@ const SplashPage = ({noKeywords, noMovies, onSubmit, moviesArray, getKeywords, g
               </form>
 
               <div className="results-buttons">
-                {moviesArray.map(movie => {
-                  return (
-                    <button
-                      key={movie.id}
-                      id={movie.id}
-                      onClick={() => { handleClick(movie) }}
-                    >
-                      {`${movie.title}
-                                            (${movie.release_date})`}
-                    </button>
-                  )
-                })}
+                {noMovies || noKeywords? <p className="error-message">Insufficient data, try another title!</p> : 
+                  moviesArray.map(movie => {
+                    return (
+                      <button
+                        key={movie.id}
+                        id={movie.id}
+                        onClick={() => { handleClick(movie) }}
+                      >
+                        {`${movie.title}
+                                              (${movie.release_date})`}
+                      </button>
+                    )
+                  })
+                }
               </div>
             </main>
           </div>

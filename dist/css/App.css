@@ -337,12 +337,23 @@ button {
   border: #8EF9F4 3px solid;
 }
 
+.splash-content .no-movies::placeholder {
+  color: #B05C3A;
+  opacity: 1;
+}
+
 .splash-content .results-buttons {
   display: flex;
   justify-content: space-between;
   margin-top: 3rem;
   margin-left: 25%;
   width: 75%;
+}
+
+.splash-content .results-buttons .error-message {
+  margin-left: 0;
+  width: 100%;
+  color: #E5E5E5;
 }
 
 .splash-content .results-buttons button {
@@ -410,6 +421,73 @@ button {
   }
 }
 
+.gallery-background {
+  background-color: #E5E5E5;
+  background-image: url("../assets/movie-theatre.png");
+  background-size: cover;
+  background-position: center;
+  padding-top: 20px;
+}
+
+.gallery-background .wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  min-height: 95vh;
+}
+
+.gallery-background h1 {
+  text-align: center;
+  background-color: #141640;
+  padding: 30px;
+  margin: 30px 0;
+  box-shadow: 20px 30px 0 #8EF9F4;
+  width: 100%;
+}
+
+.gallery {
+  display: flex;
+  margin: 0 auto;
+  align-items: center;
+  justify-content: space-between;
+  max-height: 500px;
+}
+
+.gif-wrapper {
+  width: 30%;
+  max-height: 100%;
+  box-shadow: 20px 30px 0 #8EF9F4;
+  margin: 30px 0;
+}
+
+.gif-wrapper img {
+  width: 100%;
+  display: block;
+  max-height: 100%;
+}
+
+.movie-overview {
+  margin: 30px auto;
+  background-color: #6B6EEC;
+  color: #111;
+  padding: 40px;
+  text-align: center;
+  line-height: 3rem;
+}
+
+button.clear-button {
+  color: #E5E5E5;
+  background-color: #141640;
+  border: #6B6EEC 3px solid;
+  padding: 20px 30px;
+  border-radius: 0.5rem;
+  width: 200px;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
 @media (max-width: 820px) {
   .splash-content header h1 {
     text-align: center;
@@ -423,6 +501,23 @@ button {
   .splash-content .results-buttons {
     margin-left: 0;
     width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .gallery {
+    flex-direction: column;
+    max-height: fit-content;
+  }
+  .gallery .gif-wrapper {
+    width: 100%;
+  }
+  .gallery-background {
+    height: fit-content;
+  }
+  .gallery-background h1,
+  .gallery-background .gif-wrapper {
+    box-shadow: 15px 15px 0 #8EF9F4;
   }
 }
 
@@ -456,6 +551,10 @@ button {
   }
   .splash-content .results-buttons {
     flex-direction: column;
+  }
+  .gallery-background p.movie-overview {
+    font-size: 1.6rem;
+    padding: 20px;
   }
 }
 
