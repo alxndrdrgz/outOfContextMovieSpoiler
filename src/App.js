@@ -50,12 +50,10 @@ function App() {
   // Function that sets movie overview in state
   const getOverview = (overview) => {
     setMovieOverview(overview)
-    console.log(movieOverview)
   }
-
+    
   const getTitle = (title) => {
     setMovieTitle(title);
-    console.log(movieTitle);
   }
 
   // Function to take user input and make call to Movie DB API
@@ -126,12 +124,9 @@ function App() {
             keywordsArray.push(newKeyword[0]);
           }
           const keywords = response.data.keywords.slice(randomIndex, randomIndex + 3);
-          console.log('KeywordsArray:', keywordsArray);
           setMovieKeywords(keywordsArray);
           // ! THE MADNESS END HERE
           
-          console.log('Keywords:', keywords);
-          // setMovieKeywords(keywords);
         }
         });
   }
@@ -172,7 +167,8 @@ function App() {
               {
                 // Creating new object containing the image url and title, and pushing the object to gifInfo array
                 url: response.data.data[landscapeIndex].images.original.url,
-                alt: response.data.data[landscapeIndex].title
+                alt: response.data.data[landscapeIndex].title,
+                key: response.data.data[landscapeIndex].id
               }
             )
           } else {
@@ -180,7 +176,8 @@ function App() {
               {
                 // Creating new object containing the image url and title, and pushing the object to gifInfo array
                 url: response.data.data[0].images.original.url,
-                alt: response.data.data[0].title
+                alt: response.data.data[0].title,
+                key: response.data.data[0].id
               }
             )
           }
