@@ -8,7 +8,6 @@ const Results = ({ gifsArray, splashState, movieTitle, movieOverview, setMoviesA
         setMoviesArray([])
     }
 
-    console.log(gifsArray.length)
     return (
         <Fragment>
             <div className="gallery-background">
@@ -18,7 +17,6 @@ const Results = ({ gifsArray, splashState, movieTitle, movieOverview, setMoviesA
 
                         {
                             gifsArray.map((gif) => {
-                                console.log(gif)
                                 return (
                                     <div key={gif.key} className="gif-wrapper">
                                         <img src={gif.url} alt={gif.alt ? gif.alt : `A gif representing ${movieTitle}`} />
