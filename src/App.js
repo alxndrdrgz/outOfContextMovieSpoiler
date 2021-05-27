@@ -42,9 +42,9 @@ function App() {
   const [gifsArray, setGifsArray] = useState([]);
   // state that tracks the current page view
   const [pageView, setPageView] = useState('splash');
-  // state that checks to see if there are any movies in the filteredArray.
+  // state that tracks if there are any movies in the filteredArray.
   const [noMovies, setNoMovies ] = useState(false)
-
+  // state that checks to see if there are any keywords returned
   const [noKeywords, setNoKeywords ] = useState(false)
 
   // Function that sets movie overview in state
@@ -152,7 +152,7 @@ function App() {
       .then(responses => {
         responses.forEach( (response) => {
           // Creating a test to determine if the current image has landscape dimensions
-          const isLandscape = (image) => image.images.original.width / image.images.original.height >= 1.2;
+          const isLandscape = (image) => image.images.original.width / image.images.original.height >= 1.3;
           // Loop through returned images and return first index which passes the test
           const landscapeIndex = response.data.data.findIndex(isLandscape);
           if (landscapeIndex >= 0) {
@@ -178,6 +178,10 @@ function App() {
         // set the gifsArray state to the gifInfo array
         setGifsArray(gifInfo)
         resultsState(gifInfo)
+      })
+      .catch(error => {
+        setNoKeywords(true);
+        setPageView('splash');
       })
     }, [movieKeywords])
     
