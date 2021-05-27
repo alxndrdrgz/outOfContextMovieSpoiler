@@ -59,9 +59,8 @@ const SplashPage = ({noKeywords, noMovies, onSubmit, moviesArray, getKeywords, g
                   name="movieInput"
                   value={userInput}
                   onChange={handleChange}
-                  placeholder={ noMovies || noKeywords? "Please enter a valid movie!":
-                  "Maybe try Blade Runner..."}
-                >
+                  placeholder={noMovies || noKeywords? "Insufficient data!" : "Maybe try Blade Runner..."}
+                  >
                 </input>
                 <button
                   type="submit"

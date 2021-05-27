@@ -67,6 +67,7 @@ function App() {
     }
     else{
       setNoMovies(false)
+      setNoKeywords(false)
       axios({
         url: oocms.mDbTitleURL,
         method: 'GET',
@@ -84,7 +85,7 @@ function App() {
               id: movie.id,
               title: movie.title,
               overview: movie.overview,
-              release_date: movie.release_date.match(/\d{4}/)
+              release_date: movie.release_date ? movie.release_date.match(/\d{4}/) : "Unknown"
             };
           });
           // Checking to see if the filteredArray has any movies in it with ternery operator.
@@ -167,13 +168,23 @@ function App() {
           const isLandscape = (image) => image.images.original.width / image.images.original.height >= 1.2;
           // Loop through returned images and return first index which passes the test
           const landscapeIndex = response.data.data.findIndex(isLandscape);
-          gifInfo.push(
-            {
-              // Creating new object containing the image url and title, and pushing the object to gifInfo array
-              url: response.data.data[landscapeIndex].images.original.url,
-              alt: response.data.data[landscapeIndex].title
-            }
-          )
+          if (landscapeIndex >= 0) {
+            gifInfo.push(
+              {
+                // Creating new object containing the image url and title, and pushing the object to gifInfo array
+                url: response.data.data[landscapeIndex].images.original.url,
+                alt: response.data.data[landscapeIndex].title
+              }
+            )
+          } else {
+            gifInfo.push(
+              {
+                // Creating new object containing the image url and title, and pushing the object to gifInfo array
+                url: response.data.data[0].images.original.url,
+                alt: response.data.data[0].title
+              }
+            )
+          }
         })
         // set the gifsArray state to the gifInfo array
         setGifsArray(gifInfo)
