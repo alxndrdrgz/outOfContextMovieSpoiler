@@ -4,64 +4,79 @@
     background-size: cover;
     background-position: center;
     padding-top: 20px;
+    
     .wrapper{
+        @include flex(column, center, space-around);
         height: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-around;
+        // display: flex;
+        // flex-direction: column;
+        // align-items: center;
+        // justify-content: space-around;
         min-height:95vh;
+    }
+
+    h1 {
+    background-color: $dark-blue;
+    box-shadow: 20px 30px 0 $teal;
+    margin: 30px 0;
+    padding: 30px;
+    text-align: center;
+    width: 100%;
     }
 }
 
-.gallery-background h1 {
-    text-align: center;
-    background-color: $dark-blue;
-    padding: 30px;
-    margin: 30px 0;
-    box-shadow: 20px 30px 0 $teal;
-    width: 100%;
-}
+
+// .gallery-background h1 {
+//     background-color: $dark-blue;
+//     box-shadow: 20px 30px 0 $teal;
+//     margin: 30px 0;
+//     padding: 30px;
+//     text-align: center;
+//     width: 100%;
+// }
 
 .gallery{
-    display: flex;
+    @include flex(row, center, space-between);
+    // display: flex;
+    // align-items: center;
+    // justify-content: space-between;
     margin:  0 auto;
-    align-items: center;
-    justify-content: space-between;
     max-height: 500px;
 }
 
 .gif-wrapper{
-    width: 30%;  
-    max-height: 100%;
     box-shadow: 20px 30px 0 $teal;
+    max-height: 100%;
     margin: 30px 0;
+    width: 30%;  
+    
     img{
         width: 100%;
         display: block;
         max-height: 100%;
     }
+
 }
 
 .movie-overview{
-    margin: 30px auto;
     background-color: $light-blue;
     color: $black;
+    line-height: 3rem;
+    margin: 30px auto;
     padding: 40px;
     text-align: center;
-    line-height: 3rem;
 }
 
 button.clear-button {
-    color: $white;
     background-color: $dark-blue;
-    border: $light-blue 3px solid;
-    padding: 20px 30px;
     border-radius: 0.5rem;
-    width: 200px;
-    text-align: center;
-    margin-bottom: 30px;
+    border: $light-blue 3px solid;
+    color: $white;
     font-weight: 700;
+    margin-bottom: 30px;
+    padding: 20px 30px;
+    text-align: center;
+    width: 200px;
 }
 
 button.clear-button:hover,
