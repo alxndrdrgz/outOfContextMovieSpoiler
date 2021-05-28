@@ -37,11 +37,11 @@ const SplashPage = ({ noKeywords, noMovies, onSubmit, moviesArray, getKeywords, 
           <div className="splash-content">
             <header>
               <h1>
-                Out of <span className="context-style">Context</span> Movie Spoiler
-                            </h1>
+                Out of <span className="context-style">Context </span>Movie Spoiler
+              </h1>
               <p>
                 The world moves too fast and you can get lost in the chaos. We’ve created an app that summarizes movie plots in 3 gifs. Go ahead and enter a movie title below to get started!
-                            </p>
+              </p>
             </header>
             <main>
               <form
@@ -66,7 +66,7 @@ const SplashPage = ({ noKeywords, noMovies, onSubmit, moviesArray, getKeywords, 
                   type="submit"
                 >
                   Submit
-                                </button>
+                </button>
               </form>
 
               <div className="results-buttons">
@@ -79,7 +79,7 @@ const SplashPage = ({ noKeywords, noMovies, onSubmit, moviesArray, getKeywords, 
                         onClick={() => { handleClick(movie) }}
                       >
                         {`${movie.title}
-                                              (${movie.release_date})`}
+                         (${movie.release_date})`}
                       </button>
                     )
                   })
