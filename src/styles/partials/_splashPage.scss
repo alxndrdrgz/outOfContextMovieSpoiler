@@ -1,99 +1,89 @@
 //Splash Page specific styles.
 
 .splash-background {
-    background-image: url('../assets/concession_stand.png');
-    background-size: cover;
-    background-position: center;
-    height: 90vh;
-    min-height: 800px;
-    
-    .splash-flex {
-        // display: flex;
-        // flex-direction: column;
-        // justify-content: center;
-        @include flex(row, center, center);
-        height: 100%;
-    }
+  background-image: url("../assets/concession_stand.png");
+  background-size: cover;
+  background-position: center;
+  height: 90vh;
+  min-height: 800px;
+
+  .splash-flex {
+    @include flex(row, center, center);
+    height: 100%;
+  }
 }
 
 .splash-content {
-    background-color: $trans-dark-blue;
-    width: 75%;
+  @include flex(column, stretch, flex-start);
+  align-self: flex-end;
+  background-color: $trans-dark-blue;
+  margin-bottom: 80px;
+  padding: 4rem;
+  width: 75%;
+
+  p {
     align-self: flex-end;
-    padding: 4rem;
-    margin-bottom: 80px;
-    display: flex;
-    flex-direction: column;
+    margin-left: 25%;
+    width: 75%;
+  }
 
-    p {
-        width: 75%;
-        margin-left: 25%;
-        align-self: flex-end;
+  form {
+    @include flex(row, stretch, space-between);
+    margin-left: 25%;
+    margin-top: 3.5%;
+    width: 75%;
+
+    input {
+      border: none;
+      border-radius: 0.3rem;
+      padding: 10px 0px 10px 5px;
+      padding-left: 0.5rem;
+      width: 80%;
     }
 
-    form {
-        display: flex;
-        justify-content:    space-between;
-        width: 75%;
-        margin-left: 25%;
-        margin-top: 3.5%;
-
-        input {
-            padding: 10px 0px 10px 5px;
-            width: 80%;
-            border: none;
-            padding-left: 0.5rem;
-            border-radius: 0.3rem;
-
-            
-        }
-        
-        
-        button {
-            color: $white;
-            background-color: $light-blue;
-            border: $white 3px solid;
-            padding: 10px 20px;
-            border-radius: 0.3rem;
-            font-weight: 700;
-        }
-        
-        button:hover, button:focus {
-            color: $teal;
-            border: $teal 3px solid;
-        }
-        
-    }
-    .no-movies::placeholder {
-        color:$darker-orange;
-        opacity: 1;
+    button {
+      background-color: $light-blue;
+      border: $white 3px solid;
+      border-radius: 0.3rem;
+      color: $white;
+      font-weight: 700;
+      padding: 10px 20px;
     }
 
-     .results-buttons {
-         display: flex;
-        justify-content: space-between;
-        margin-top: 3rem;
-        margin-left: 25%;
-        width: 75%;
-
-        
-
-        .error-message {
-        margin-left: 0;
-        width: 100%;
-        color: $white;
-        }
-
-        button{
-            background-color: $white;
-            border: 3px solid $light-blue;
-            color: $light-blue;
-            box-sizing: content-box;
-        }
-
-        button:hover, button:focus{
-            background-color: $teal;
-        }
+    button:hover,
+    button:focus {
+      border: $teal 3px solid;
+      color: $teal;
     }
+  }
+
+  .results-buttons {
+    @include flex(row, stretch, space-between);
+    margin-top: 3rem;
+    margin-left: 25%;
+    width: 75%;
+    
+    .error-message {
+      color: $white;
+      margin-left: 0;
+      width: 100%;
+    }
+    
+    button {
+      background-color: $white;
+      border: 3px solid $light-blue;
+      box-sizing: content-box;
+      color: $light-blue;
+    }
+    
+    button:hover,
+    button:focus {
+      background-color: $teal;
+    }
+
+  }
+  .no-movies::placeholder {
+    color: $darker-orange;
+    opacity: 1;
+  }
 }
-
