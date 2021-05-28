@@ -1,51 +1,50 @@
 //Partial for styles specific to typographical elements
 
 html {
-    font-size: 62.5%;
+  font-size: 62.5%;
 }
 
 //Stripping default styling
-h1, 
-h2, 
-p, 
-button, 
+h1,
+h2,
+p,
+button,
 footer {
-    margin: 0;
-    padding: 0;
-} 
+  margin: 0;
+  padding: 0;
+}
 
 p {
-    line-height: 2.5rem;
+  line-height: 2.5rem;
 }
 
 body {
-    font-family: $lato;
-    font-size: 2rem;
-    font-weight: 600; 
-    color: $white;
+  color: $white;
+  font-family: $lato;
+  font-size: 2rem;
+  font-weight: 600;
 }
 
 h1 {
-    font-family:$kanit;
-    color: $white;
-    font-size: 5.5rem;
-    padding-bottom: 2%;
-    letter-spacing: 0.1rem;
-    text-align: right;
+  color: $white;
+  font-family: $kanit;
+  font-size: 5.5rem;
+  letter-spacing: 0.1rem;
+  padding-bottom: 2%;
+  text-align: right;
 
   .context-style {
-  display: inline-block;
-  position: relative;
-  bottom: 2rem;
-  transform: rotate(10deg);
-  font-size: 7.5rem;
-  color: $teal;
+    bottom: 2rem;
+    color: $teal;
+    display: inline-block;
+    font-size: 7.5rem;
+    position: relative;
+    transform: rotate(10deg);
   }
 }
 
 button {
+  border-radius: 0.3rem;
   font-family: $kanit;
   padding: 1rem;
-  border-radius: 0.3rem;
 }
-

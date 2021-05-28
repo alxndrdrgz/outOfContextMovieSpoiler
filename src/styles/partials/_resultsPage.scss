@@ -8,10 +8,6 @@
     .wrapper{
         @include flex(column, center, space-around);
         height: 100%;
-        // display: flex;
-        // flex-direction: column;
-        // align-items: center;
-        // justify-content: space-around;
         min-height:95vh;
     }
 
@@ -25,21 +21,8 @@
     }
 }
 
-
-// .gallery-background h1 {
-//     background-color: $dark-blue;
-//     box-shadow: 20px 30px 0 $teal;
-//     margin: 30px 0;
-//     padding: 30px;
-//     text-align: center;
-//     width: 100%;
-// }
-
 .gallery{
     @include flex(row, center, space-between);
-    // display: flex;
-    // align-items: center;
-    // justify-content: space-between;
     margin:  0 auto;
     max-height: 500px;
 }
@@ -51,9 +34,9 @@
     width: 30%;  
     
     img{
-        width: 100%;
         display: block;
         max-height: 100%;
+        width: 100%;
     }
 
 }
@@ -89,8 +72,3 @@ button.clear-button:focus{
     position: relative;
     top: 20px;
 }
-
-
-
-
-
