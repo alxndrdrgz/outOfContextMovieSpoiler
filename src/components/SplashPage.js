@@ -70,7 +70,7 @@ const SplashPage = ({ noKeywords, noMovies, onSubmit, moviesArray, getKeywords, 
               </form>
 
               <div className="results-buttons">
-                {noMovies || noKeywords ? <p className="error-message">Insufficient data, try another title!</p> :
+                {noMovies || noKeywords ? <p className="error-message">Something went wrong, try another title!</p> :
                   moviesArray.map(movie => {
                     return (
                       <button
