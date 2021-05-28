@@ -11,25 +11,15 @@ const oocms = {};
 
 //Variable declaring the Giphy API key
 oocms.giphyKey = '2hsXOQxDVBHbq5Ok1353va0m8wTJvV3j'
-// `J0Mq3DGHVu2HtcdoS7QMvJX0qMJ359VA`;
 // Variable to store Giphy endpoint
 oocms.giphyURL = 'https://api.giphy.com/v1/gifs/search';
 //Variable declaring Movie DB key
 oocms.mDbKey = `5b4cfcb5bfcdfe63f43999ac1acbfb53`;
 // Variable to store Movie DB endpoint
 oocms.mDbTitleURL = 'https://api.themoviedb.org/3/search/movie';
-// oocms.movieDbKeywordURL = 'https://api.themoviedb.org/3/movie/{movieID}/keywords';
-
 
 function App() {
-  //STRETCH GOALS: shareable results using routing? :O
-  //get a random set of 3 keywords(MAYBE DO THIS BEFORE THEY SELECT THE MOVE?? AND DO IT FOR ALL 3 MOVIE OPTIONS -- STRETCH)
   
-  // 1 - Loading Page
-  //* conditionally rendered error message
-
-
-  // useStates located here:
   // State that store the initial movie results
   const [moviesArray, setMoviesArray] = useState([]);
   // State that stores the chosen movies overview
@@ -42,14 +32,14 @@ function App() {
   const [gifsArray, setGifsArray] = useState([]);
   // state that tracks the current page view
   const [pageView, setPageView] = useState('splash');
-  // state that checks to see if there are any movies in the filteredArray.
-  const [noMovies, setNoMovies ] = useState(false)
-
-  const [noKeywords, setNoKeywords ] = useState(false)
+  // state that tracks if there are any movies in the filteredArray.
+  const [noMovies, setNoMovies ] = useState(false);
+  // state that checks to see if there are any keywords returned
+  const [noKeywords, setNoKeywords ] = useState(false);
 
   // Function that sets movie overview in state
   const getOverview = (overview) => {
-    setMovieOverview(overview)
+    setMovieOverview(overview);
   }
     
   const getTitle = (title) => {
@@ -63,8 +53,8 @@ function App() {
       setNoMovies(true);
     }
     else{
-      setNoMovies(false)
-      setNoKeywords(false)
+      setNoMovies(false);
+      setNoKeywords(false);
       axios({
         url: oocms.mDbTitleURL,
         method: 'GET',
@@ -104,18 +94,16 @@ function App() {
       }
     })
       .then(response => {
-
         if(response.data.keywords.length < 3) {
-          setTimeout( () =>{setPageView("splash")}, 1000)
-          
-          setNoKeywords(true)
+          setTimeout( () =>{setPageView("splash")}, 1000);
+          setNoKeywords(true);
         }
         else{
           const keywordsArray = [];
           const copiedKeywords = [...response.data.keywords]
           for (let i = 0; i < 3; i++) {
             // Get a random index number from the copiedKeywords array, retrieve that keyword and remove it from the array
-            const randomIndex = Math.floor(Math.random() * copiedKeywords.length)
+            const randomIndex = Math.floor(Math.random() * copiedKeywords.length);
             const newKeyword = copiedKeywords.splice(randomIndex, 1);
             keywordsArray.push(newKeyword[0]);
           }
@@ -152,7 +140,7 @@ function App() {
       .then(responses => {
         responses.forEach( (response) => {
           // Creating a test to determine if the current image has landscape dimensions
-          const isLandscape = (image) => image.images.original.width / image.images.original.height >= 1.2;
+          const isLandscape = (image) => image.images.original.width / image.images.original.height >= 1.3;
           // Loop through returned images and return first index which passes the test
           const landscapeIndex = response.data.data.findIndex(isLandscape);
           if (landscapeIndex >= 0) {
@@ -176,8 +164,12 @@ function App() {
           }
         })
         // set the gifsArray state to the gifInfo array
-        setGifsArray(gifInfo)
-        resultsState(gifInfo)
+        setGifsArray(gifInfo);
+        resultsState(gifInfo);
+      })
+      .catch(error => {
+        setNoKeywords(true);
+        setPageView('splash');
       })
     }, [movieKeywords])
     
@@ -185,19 +177,19 @@ function App() {
 
   // function to set the viewState to "loading"
   const loadingState = () => {
-    setPageView('loading')
+    setPageView('loading');
   }
 
   // function to set the viewState to "results"
   const resultsState = (gifInfo) => {
     if(gifInfo.length > 0){
-      setPageView('results')
+      setPageView('results');
     }
   }
 
   // function to set the viewState to "splash"
   const splashState = () => {
-    setPageView('splash')
+    setPageView('splash');
   }
 
   return (

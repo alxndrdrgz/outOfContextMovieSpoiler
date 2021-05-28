@@ -1,34 +1,29 @@
-.loading-screen {
-  .wrapper {
+.loading-screen .wrapper {
     @include flex(column, center, center);
     height: 100vh;
-    // display: flex;
-    // flex-direction: column;
-    // align-items: center;
-    // justify-content: center;
+    
     p {
       font-size: 3rem;
       letter-spacing: 5px;
       margin-top: 50px;
     }
+
   }
-}
 
 .animation-container {
-  // display: flex;
-  // align-items: flex-end;
-  // justify-content: space-between;
   @include flex(row, flex-end, space-between);
   height: 60vw;
   max-height: 400px;
-  width: 100%;
   max-width: 500px;
+  width: 100%;
+  
   .animation-bar {
+    animation: stretchAndSquish 1s alternate infinite;
     background-color: $light-blue;
     height: 100%;
     width: 23%;
-    animation: stretchAndSquish 1s alternate infinite;
   }
+  // Loop through all animation-bar classes, give each successive class a longer animation delay
   @for $i from 0 through 3 {
     .animation-bar#{$i} {
       animation-delay: (0.2s * $i)
